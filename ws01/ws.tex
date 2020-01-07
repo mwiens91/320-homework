@@ -1,0 +1,131 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Number sets
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\V}{\mathbb{V}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{MATH 320 Worksheet 1} \\
+\textbf{Matt Wiens \#301294492} \\
+\textbf{2020-01-15}
+
+1. Let $X = \R^n$. Verify that the following are metrics on $X$:
+
+(a)
+%
+\begin{equation*}
+    d_1(x, y) = \sum_{i = 1}^n \envert{x_i - y_i}
+    .
+\end{equation*}
+
+\textit{Solution.}
+We need to verify three properties:
+
+Fix any $x, y, z \in X$.
+
+1. Clearly $d_1(x, y) \geq 0$. Also, we have
+%
+\begin{align*}
+    &d_1(x, y) = 0 \\
+    &\iff x_i = y_i, \quad \forall i = 1, \ldots, n \\
+    &\iff x = y
+    .
+\end{align*}
+%
+2. Here we need to verify the symmetry of $d_1$:
+%
+\begin{align*}
+    d_1(x, y) &= \sum_{i = 1}^n \envert{x_i - y_i} \\
+              &= \sum_{i = 1}^n \envert{y_i - x_i} \\
+              &= d_1(y, x)
+    .
+\end{align*}
+%
+3. For this property we will use the triangle inequality of $|\cdot|$:
+%
+\begin{align*}
+    d_1(x, y) + d_1(y, z)
+        &= \sum_{i = 1}^n \envert{x_i - y_i} + \sum_{i = 1}^n \envert{y_i - z_i} \\
+        &= \sum_{i = 1}^n \del[2]{\envert{x_i - y_i} + \envert{y_i - z_i}} \\
+        &\geq \sum_{i = 1}^n \envert{x_i - z_i} \\
+        &= d_1(x, z)
+    .
+\end{align*}
+
+\vspace{3mm}
+
+(b)
+%
+\begin{equation*}
+    d_2(x, y) = \sqrt{\sum_{i = 1}^n {\envert{x_i - y_i}}^2}
+    .
+\end{equation*}
+
+\textit{Solution.}
+Properties 1 and 2 are verified similarly to what was shown in part (a).
+Here we will only verify property 3.
+
+Fix any $x, y, z \in X$. Then
+%
+\begin{align*}
+    d_2(x, z)^2
+        &= \sum_{i = 1}^n \envert{x_i - z_i}^2 \\
+        &= \sum_{i = 1}^n \envert{(x_i - y_i) - (y_i - z_i)}^2 \\
+        &= \sum_{i = 1}^n
+            \del{
+                \envert{x_i - y_i}^2
+                - 2 \envert{x_i - y_i} \envert{y_i - z_i}
+                + \envert{y_i - z_i}^2
+            } \\
+        &= \sum_{i = 1}^n \envert{x_i - y_i}^2
+           - 2 \sum_{i = 1}^n \envert{x_i - y_i} \envert{y_i - z_i}
+           + \sum_{i = 1}^n \envert{y_i - z_i}^2 \\
+        &= d_2(x, y)^2
+           - 2 \sum_{i = 1}^n \envert{x_i - y_i} \envert{y_i - z_i}
+           + d_2(y, z)^2 \\
+        &\leq d_2(x, y)^2 + d_2(y, z)^2 \\
+        &\leq \del{d_2(x, y) + d_2(y, z)}^2
+    .
+\end{align*}
+%
+Taking square roots of both sides of the inequality, we obtain
+%
+\begin{equation*}
+    d_2(x, y) + d_2(y, z) \geq d_2(x, z)
+    .
+\end{equation*}
+
+\newpage
+
+\end{document}
