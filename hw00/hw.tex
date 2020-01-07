@@ -12,6 +12,7 @@
 % Math
 \usepackage{mathtools}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{commath}
 
 % Number sets
@@ -39,18 +40,97 @@
 \textbf{2020-01-10}
 
 1. Suppose $f: E \to F$ is a mapping. Suppose $A, B \subseteq E$. Prove
-   or disprove the following:
-%
-\begin{enumerate}
-    \item $f(A \cup B) = f(A) \cup f(B)$;
-    \item $f(A \cap B) = f(A) \cap f(B)$;
-    \item $f(A \setminus B) = f(A) \setminus f(B)$.
-\end{enumerate}
-%
-For those that do not hold, modify the relation to obtain a correct
-expression.
+   or disprove the below equalities. For those that do not hold,
+   modify the relation to obtain a correct expression.
 
-\textbf{Solution}
+(a)
+%
+\begin{equation*}
+    f(A \cup B) = f(A) \cup f(B)
+    .
+\end{equation*}
+
+\begin{proof}
+
+Suppose $y \in f(A \cup B)$. Then there exists $x \in A \cup B$ such
+that $f(x) = y$. Since $x \in A \cup B$, either $x \in A$ or $x \in B$.
+Thus $y \in f(A)$ or $y \in f(B)$; or equivalently, $y \in f(A) \cup
+f(B)$. Since $y$ was arbitrary, we have $f(A \cup B) \subseteq f(A) \cup
+f(B)$.
+
+Now suppose $y \in f(A) \cup f(B)$. Then either $y \in f(A)$ or $y \in
+f(B)$. Thus there exists $x \in A$ or $x \in B$ such that $f(x) = y$.
+Noting that $x \in A \cup B$, this implies that $y \in f(A \cup B)$.
+Hence, we have that $f(A \cup B) \supseteq f(A) \cup f(B)$.
+
+Taking both parts of this proof together, we have that $f(A \cup B) =
+f(A) \cup f(B)$.
+
+\end{proof}
+
+(b)
+%
+\begin{equation*}
+    f(A \cap B) = f(A) \cap f(B)
+    .
+\end{equation*}
+
+\textit{Solution.} The above equality is incorrect. Suppose that $A =
+[-1, 0]$, $B = [0, 1]$ and
+%
+\begin{equation*}
+    f(x) =
+    \begin{cases}
+        1, &x \neq 0 \\
+        0, &x = 0
+    \end{cases}
+\end{equation*}
+%
+Then $f(A) = f(B) = \cbr{0, 1}$ and $f(A \cap B) = \cbr{0}$. Hence
+%
+\begin{equation*}
+    f(A \cap B)
+        = \cbr{0}
+        \neq \cbr{0, 1}
+        = \cbr{0, 1} \cap \cbr{0, 1}
+        = f(A) \cap f(B)
+    .
+\end{equation*}
+%
+A modification of the equality that is correct would be
+%
+\begin{equation*}
+    f(A \cap B) \subseteq f(A) \cap f(B)
+    .
+\end{equation*}
+
+\vspace{3mm}
+
+(c)
+%
+\begin{equation*}
+    f(A \setminus B) = f(A) \setminus f(B)
+    .
+\end{equation*}
+
+\textit{Solution.} The above equality is also incorrect. Using $A, B, f$
+as in the counterexample in part (b), we have that
+%
+\begin{equation*}
+    f(A \setminus B)
+        = \cbr{1}
+        \neq \varnothing
+        = \cbr{0, 1} \setminus \cbr{0, 1}
+        = f(A) \setminus f(B)
+    .
+\end{equation*}
+%
+A modification of the equality that is correct would be
+%
+\begin{equation*}
+    f(A \setminus B) \supseteq f(A) \setminus f(B)
+    .
+\end{equation*}
 
 \newpage
 
@@ -68,27 +148,72 @@ Prove that $\inf(-A)$ exists and
     .
 \end{equation*}
 
-\textbf{Solution}
+\begin{proof}
+
+Since $A \subseteq \R$ we know that $\alpha = \sup A$ exists. Now, for
+all $x \in A$, $\alpha \geq x$ or $-\alpha \leq -x$. Thus, for all $y
+\in -A$, $-\alpha \leq y$. Hence $-\alpha$ is a lower bound of $-A$. Let
+$\beta$ be any lower bound of $-A$. Then for all $y \in -A$, $\beta \leq
+y$ or $-\beta \geq -y$. This implies that for all $x \in A$, $-\beta
+\geq x$, so $-\beta$ is an upper bound of $A$. Since $\alpha = \sup A$,
+we must have that $\alpha \leq -\beta$ or $-\alpha \geq \beta$. Since
+$\beta$ was an arbitrary lower bound of $-A$, we have that $\inf(-A) =
+-\alpha = - \sup A$.
+
+\end{proof}
 
 \newpage
 
-
 3. Prove that if $\alpha \in \Q$ satisfies that
 %
-\begin{equation*}
+\begin{equation}
     \alpha^2 > 2, \qquad \alpha > 0
     ,
-\end{equation*}
+    \label{eq:q3-1}
+\end{equation}
 %
 then there exists $\delta \in \Q$ positive such that
 %
-\begin{equation*}
+\begin{equation}
     \del{\alpha - \delta}^2 > 2
     \quad \text{and} \quad \alpha - \delta > 0
     .
-\end{equation*}
+    \label{eq:q3-2}
+\end{equation}
 
-\textbf{Solution}
+\begin{proof}
+
+Suppose $\alpha \in \Q$ satisfies \eqref{eq:q3-1}. Then we have that
+%
+\begin{equation*}
+    \alpha > \sqrt 2
+\end{equation*}
+%
+Using that $\Q$ is dense in $\R$, there exists $\beta \in \Q$ such that
+%
+\begin{equation*}
+    \alpha > \beta > \sqrt 2
+\end{equation*}
+%
+Let $\delta = \alpha - \beta$. First, we have that
+%
+\begin{equation*}
+    \alpha - \delta = \beta > \sqrt 2 > 0
+    .
+\end{equation*}
+%
+We also have that
+%
+\begin{equation*}
+    \beta^2 > 2
+    \iff (\alpha - \delta)^2 > 2
+    .
+\end{equation*}
+%
+Hence, $\delta$ satisfies \eqref{eq:q3-2}, and since $\delta \in \Q$, we
+have completed the proof.
+
+\end{proof}
 
 \newpage
 
@@ -109,6 +234,40 @@ roots of this type of equation as
 %
 Prove that $A$ is countable.
 
-\textbf{Solution}
+\begin{proof}
+
+Let $P_n$ be the set of all $n$-th degree polynomials of the form shown
+in the LHS of \eqref{eq:q4-1}. Further define
+%
+\begin{equation*}
+    P = \bigcup_{n = 1}^{\infty} P_n
+    .
+\end{equation*}
+%
+The function $f_n: P_n \to \Z^n$ defined by
+%
+\begin{equation*}
+    f\del{a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0} = \del{a_n, a_{n-1}, \ldots, a_0}
+\end{equation*}
+%
+is clearly bijective, and since $\Z^n$ is countable, it follows that
+each $P_n$ is also countable. Since each $P_n$ is countable, it follows
+that $P$ as defined above is countable (the union of countably many
+countable sets is countable).
+
+Now, define $R: P \to \Z$, where for each $p \in P$, $R(p)$ is the set
+of real roots of $p$. By the Fundamental Theorem of Algebra, $R(p)$ is
+finite. Then we have that
+%
+\begin{equation*}
+    A = \bigcup_{p \in P} R(p)
+    .
+\end{equation*}
+%
+Since $P$ is countable and for each $p \in P$, $R(p)$ is finite, it
+follows that $A$ is countable (the union of countably many finite sets
+is countable).
+
+\end{proof}
 
 \end{document}
