@@ -1,0 +1,114 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{commath}
+
+% Number sets
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{MATH 320 Homework 0} \\
+\textbf{Matt Wiens \#301294492} \\
+\textbf{2020-01-10}
+
+1. Suppose $f: E \to F$ is a mapping. Suppose $A, B \subseteq E$. Prove
+   or disprove the following:
+%
+\begin{enumerate}
+    \item $f(A \cup B) = f(A) \cup f(B)$;
+    \item $f(A \cap B) = f(A) \cap f(B)$;
+    \item $f(A \setminus B) = f(A) \setminus f(B)$.
+\end{enumerate}
+%
+For those that do not hold, modify the relation to obtain a correct
+expression.
+
+\textbf{Solution}
+
+\newpage
+
+2. Suppose $A \subseteq \R$ is a set bounded from above. Define
+%
+\begin{equation*}
+   -A = \cbr{-x \in A : x \in A}
+   .
+\end{equation*}
+%
+Prove that $\inf(-A)$ exists and
+%
+\begin{equation*}
+    \inf(-A) = -\sup A
+    .
+\end{equation*}
+
+\textbf{Solution}
+
+\newpage
+
+
+3. Prove that if $\alpha \in \Q$ satisfies that
+%
+\begin{equation*}
+    \alpha^2 > 2, \qquad \alpha > 0
+    ,
+\end{equation*}
+%
+then there exists $\delta \in \Q$ positive such that
+%
+\begin{equation*}
+    \del{\alpha - \delta}^2 > 2
+    \quad \text{and} \quad \alpha - \delta > 0
+    .
+\end{equation*}
+
+\textbf{Solution}
+
+\newpage
+
+4. Consider the root(s) of the equation
+%
+\begin{equation}
+    a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 = 0
+    ,
+    \label{eq:q4-1}
+\end{equation}
+%
+where $a_0, \ldots, a_n$ are all integers. Define the set of all the
+roots of this type of equation as
+%
+\begin{equation*}
+    A = \cbr{x \in \R : \text{$x$ is a root of \eqref{eq:q4-1} for some $a_0, \cdots, a_n \in \Z$}}
+\end{equation*}
+%
+Prove that $A$ is countable.
+
+\textbf{Solution}
+
+\end{document}
