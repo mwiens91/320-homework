@@ -24,8 +24,12 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\V}{\mathbb{V}}
 
-% Handy shortcuts
+% Handy math macros
+% For closure bar
 \newcommand*\clos[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+% For implies arrow with strikethrough
+\newcommand{\notimplies}{%
+      \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
 
 % Links
 \usepackage{hyperref}
@@ -59,7 +63,114 @@
 For each of these, determine whether it is a metric or not.
 
 \textit{Solution.}
-hey
+For each of these functions we will determine if they are metrics  by
+checking they satisfy the three properties discussed in class. Let $x,
+y, z \in \R$.
+
+For the first property, clearly $d_1, d_2, d_3, d_4 \geq 0$.
+Additionally, for $d_1$ we have that
+%
+\begin{align*}
+    &d_1(x, y) = 0 \\
+    &\iff (x - y)^2 = 0 \\
+    &\iff x - y = 0 \\
+    &\iff x = y
+    ;
+\end{align*}
+%
+and similarly for $d_2$ we have that
+%
+\begin{align*}
+    &d_2(x, y) = 0 \\
+    &\iff \sqrt{\, \envert{x - y}} = 0 \\
+    &\iff \envert{x - y} = 0 \\
+    &\iff x = y
+    .
+\end{align*}
+%
+Thus $d_1$ and $d_2$ satisfy the first property. However for $d_3$ we
+have
+%
+\begin{align*}
+    &d_3(x, y) = 0 \\
+    &\iff \envert{x^2 - y^2} = 0 \\
+    &\iff x^2 = y^2 \\
+    &\notimplies x = y
+    .
+\end{align*}
+%
+Therefore $d_3$ is not a metric.
+
+For $d_4$ we have
+%
+\begin{align*}
+    &d_4(x, y) = 0 \\
+    &\iff \envert{x - 2 y} = 0 \\
+    &\iff x = 2 y \\
+    &\notimplies x = y
+    ,
+\end{align*}
+%
+so $d_4$ is also not a metric.
+
+Now we will check whether $d_1$ and $d_2$ satisfy the second property.
+Since
+%
+\begin{align*}
+    d_1(x, y) &= (x - y)^2 \\
+              &= (y - x)^2 \\
+              &= d_1(y, x),
+\end{align*}
+%
+and
+%
+\begin{align*}
+    d_2(x, y) &= \sqrt{\, \envert{x - y}} \\
+              &= \sqrt{\, \envert{y - x}} \\
+              &= d_2(y, x),
+\end{align*}
+%
+both $d_1$ and $d_2$ satisfy the second property.
+
+Now we will check the third property. For $d_1$, consider the case when
+$x = 1$, $y = 0.1$, and $z = 0$. Then, in this case
+%
+\begin{align*}
+    d_1(x, y) + d_1(y, z)
+        &= d_1(1, 0.1) + d_1(0.1, 0) \\
+        &= (1 - 0.1)^2 + (0.1 - 0)^2 \\
+        &= 0.81 + 0.01 \\
+        &= 0.82 \\
+        &< 1 \\
+        &= (1 - 0)^2 \\
+        &= d_1(1, 0) \\
+        &= d_1(x, z)
+        .
+\end{align*}
+%
+This counterexample shows that $d_1$ is not a metric.
+
+For $d_2$, we will the triangle inequality of $|\cdot|$ to show that
+$d_2$ satisfies the third property:
+%
+\begin{align*}
+    d_2(x, z)^2
+        &= \envert{x - z} \\
+        &\leq \envert{x - y} + \envert{y - z} \\
+        &= d_2(x, y)^2 + d_2(y, z)^2 \\
+        &\leq \del{d_2(x, y) + d_2(y, z)}^2
+        .
+\end{align*}
+%
+Taking square roots of both sides, we obtain
+%
+\begin{equation*}
+    d_2(x, y) + d_2(y, z) \geq d_2(x, z)
+    .
+\end{equation*}
+%
+Therefore $d_2$ also satisfies the third property and hence is a metric.
+As was shown above, neither $d_1$, $d_3$, nor $d_4$ are metrics.
 
 \newpage
 
@@ -73,7 +184,51 @@ hey
 
 \begin{proof}
 
-hey
+We will prove that $\tilde{d}$ satisfies all three properties required
+for it to be a metric. Let $x, y, z \in X$.
+
+For the first property, clearly $\tilde{d}(x, y) \geq 0$. Additionally,
+%
+\begin{align*}
+    &\tilde{d}(x, y) = 0 \\
+    &\iff \frac{d(x,y)}{1 + d(x,y)} = 0 \\
+    &\iff d(x,y) = 0 \\
+    &\iff x = y
+    .
+\end{align*}
+%
+Thus, $\tilde{d}$ satisfies the first property.
+
+For the second property, we have
+%
+\begin{align*}
+    \tilde{d}(x, y)
+        &= \frac{d(x,y)}{1 + d(x,y)} \\
+        &= \frac{d(y,x)}{1 + d(y,x)} \\
+        &= \tilde{d}(y, x)
+    ,
+\end{align*}
+%
+so $\tilde{d}$ also satisfies the second property.
+
+For the third property, we have that
+%
+\begin{align*}
+    \tilde{d}(x, z)
+        &= \frac{d(x,z)}{1 + d(x,z)} \\
+        &= \frac{1}{1 + \frac{1}{d(x,z)}} \\
+        &\leq \frac{1}{1 + \frac{1}{d(x,y) + d(y,z)}} \\
+        &= \frac{d(x,y) + d(y, z)}{1 + d(x,y) + d(y,z)} \\
+        &= \frac{d(x,y)}{1 + d(x,y) + d(y,z)} + \frac{d(y, z)}{1 + d(x,y) + d(y,z)} \\
+        &\leq \frac{d(x,y)}{1 + d(x,y)} + \frac{d(y, z)}{1 + d(y,z)} \\
+        &= \tilde{d}(x, y) + \tilde{d}(y, z)
+        .
+\end{align*}
+%
+Thus $\tilde{d}$ satisfies the third property.
+
+Since we have shown that $\tilde{d}$ satisfies all three properties
+required of a metric, we conclude that $\tilde{d}$ is a metric on $X$.
 
 \end{proof}
 
@@ -87,7 +242,41 @@ X$ be an injection. Prove that $f$ induces a metric on $Y$ by
 
 \begin{proof}
 
-hey
+We will prove that $d_Y$ satisfies all three properties of a metric. Let
+$a, b, c \in Y$.
+
+For the first property, clearly $d_Y(a, b) \geq 0$. Additionally
+%
+\begin{align*}
+    &d_Y(a, b) = 0 \\
+    &\iff d_X(f(a), f(b)) = 0 \\
+    &\iff f(a) = f(b) \\
+    &\iff a = b
+    ,
+\end{align*}
+%
+where the last equivalence holds because $f$ is injective.
+
+For the second property, we have
+%
+\begin{align*}
+    d_Y(a, b) &= d_X(f(a), f(b)) \\
+              &= d_X(f(b), f(a)) \\
+              &= d_Y(b, a)
+              .
+\end{align*}
+%
+Finally, for the third property, we have that
+%
+\begin{align*}
+    d_Y(a, c) &= d_X(f(a), f(c)) \\
+              &\leq d_X(f(a), f(b)) + d_X(f(b), f(c)) \\
+              &= d_Y(a, b) + d_Y(b, c)
+              .
+\end{align*}
+%
+Since $d_Y$ satisfies all of the three properties, it induces a metric
+on $Y$.
 
 \end{proof}
 
