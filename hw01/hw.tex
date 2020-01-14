@@ -322,6 +322,15 @@ Is $E$ a closed subset of the space $(C[-1, 1], d)$? Justify your answer
 by either proving it or showing a counterexample.
 
 \textit{Solution.}
-hey
+$E$ is not a closed subset of the space. To show why this is so, we will
+use the Stone-Weierstrass thoerem (SE), which guarantees that for any $f
+\in C([-1, 1])$ and any $r > 0$, there exists a polynomial $p$ such that
+$\sup_{[-1, 1]} \envert{f - p} < r$. Recall that polynomials are
+differentiable, so in the above we would have that $p \in E$.
+
+Let $f \in C[-1, 1] \setminus E$. Then for any $r > 0$, using the SE
+theorem we have that $\del{N_r(f) \setminus \cbr{f}} \cap E \neq
+\emptyset$. Therefore $f$ is a limit point of $E$, but $f \not\in E$, so
+$E$ is not closed.
 
 \end{document}
