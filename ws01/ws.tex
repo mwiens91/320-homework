@@ -137,7 +137,17 @@ Taking square roots of both sides of the inequality, we obtain
 
 \begin{proof}
 
-hey
+Let $x$ be a limit point of $E^\prime$. Then for all neighbourhoods
+$N_{r_x}(x)$ of $x$, there exists $y \in E^\prime$ ($y \neq x$) such
+that $y \in N_{r_x}(x)$. Consider any neighbourhood $N_{r_y}(y) \subset
+N_{r_x}(x)$. Since $y \in E^\prime$, there exists $z \in E$ ($z \neq y$)
+such that $z \in N_{r_y}(y)$. Thus $z \in N_{r_x}(x)$. Hence we have
+shown that for all neighbourhoods $N_{r_x}(x)$ of $x$ there exists $z
+\in E$ with $z \neq x$ such that $z \in N_{r_x}(x)$. Therefore $x$ is a
+limit point of $E$ and hence $x \in E^\prime$.
+
+Therefore, for every limit point $x$ of $E^\prime$, $x \in E^\prime$, so
+$E^\prime$ is closed.
 
 \end{proof}
 
@@ -146,19 +156,40 @@ every point of every nonempty open set $E \subseteq \R^n$ a limit point
 of $E$? What if $E$ is closed?
 
 \textit{Solution.}
-hey
+Let $E \subseteq \R^n$ be open. Then for all $x \in E$, there exists $r
+> 0$ such that $N_r(x) \subset E$, and hence for all $l > 0$,
+$\del{N_r(x) \setminus \cbr{x}} \cap E \neq \emptyset$. Thus $x$ is a
+limit point of $E$.
+
+However, if $E \subseteq \R^n$ is closed, this does not necessarily
+hold. Consider the set $E = \cbr{x}$ with $x \in \R^n$. In this case,
+$E$ is closed, but has no limit points.
 
 \newpage
 
 3. Recall that $E^\circ$ denotes the interior of $E$, $\clos{E}$ is the
    closure of $E$, and $E^c$ is the complement of $E$.
 
+\textit{Note that my proofs below assume that $E$ has an associated
+metric. If $E$ is instead only a topological space, then the below
+proofs still work, you just need to refer to neighbourhoods in a more
+general way and not characterize them by radii.}
+
 (a) Prove that if $G \subseteq E$ and $G$ is open, then $G \subseteq
 E^\circ$.
 
 \begin{proof}
 
-hey
+Let $G \subseteq E$ with $G$ open, and let $x \in G$. If $x$ is an
+interior point of $E$, then by definition $x \in E^\circ$.
+
+Suppose $x$ is not an interior point of $E$. Then there is no $r > 0$
+such that $N_r(x) \subset E$. But this contradicts $G$ being open, for
+there must exist $l > 0$ such that $N_l(x) \subset G \subseteq E$. Hence
+$x$ must be an interior point of $E$.
+
+Therefore $x \in E^\circ$, and, noting that $x$ was arbitrary, we have
+that $G \subseteq E^\circ$.
 
 \end{proof}
 
@@ -166,7 +197,21 @@ hey
 
 \begin{proof}
 
-hey
+Suppose $x \in \del{E^\circ}^c$. Then $x$ is not an interior point of
+$E$, so there is no $r > 0$ such that $N_r(x) \subset E$. Therefore, for
+all $r > 0$, $N_r(x) \cap E^c \neq \emptyset$, so either $x \in E^c$ or
+$x$ is a limit point of $E^c$ (or both). Thus $x \in \clos{E^c}$. This
+proves that $\del{E^\circ}^c \subseteq \clos{E^c}$
+
+Now let $x \in \clos{E^c}$. Suppose $x$ is an interior point of $E$.
+Then there exists $r > 0$ such that $N_r(x) \subset E$. But since $x \in
+\clos{E^c}$, either $x \in E^c$ or for all $l > 0$, $\del{N_l(x)
+\setminus \cbr{x}} \cap E^c \neq \emptyset$, both of which contradict
+$N_r(x) \subset E$. Thus $x$ is not an interior point of $E$, so $x \in
+\del{E^\circ}^c$. Since $x$ was arbitrary, we have $\clos{E^c} \subseteq
+\del{E^\circ}^c$.
+
+Therefore, $\del{E^\circ}^c = \clos{E^c}$.
 
 \end{proof}
 
