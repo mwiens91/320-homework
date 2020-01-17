@@ -1,0 +1,80 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Number sets
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{MATH 320 Worksheet 2} \\
+\textbf{Matt Wiens \#301294492} \\
+\textbf{2020-01-23}
+
+1. Let $E$ be the set of all $x \in [0, 1]$ whose decimal expansion
+   contains only the digits $4$ and $7$. Is $E$ countable? Is $E$ dense
+   in $[0, 1]$? Is $E$ compact? Is $E$ perfect?
+
+\textit{Solution.}
+hey
+
+\newpage
+
+2. Consider the metric space $C([0, 1], d)$ of continuous real-valued
+   functions on the interval $[0, 1]$ with the sup-norm metric
+%
+\begin{equation*}
+    d(f, g) \coloneqq \sup_{t \in [0, 1]} \envert{f(t) - g(t)}
+    .
+\end{equation*}
+%
+Consider the subset $A$ given by
+%
+\begin{equation*}
+    A \coloneqq \cbr{f \in C([0, 1]): |f(t)| \leq 5 \quad \forall t \in [0, 1]}
+    .
+\end{equation*}
+%
+Is this subset open? Closed? Compact?
+
+\textit{Solution.}
+hey
+
+\newpage
+
+3. Consider the metric space $(X, d)$ where $d$ is the discrete metric.
+   Show that every subset of $X$ is both open and closed. Show that if
+   $X = \R$, then the set $\cbr{x \in \R: 0 \leq x \leq 1}$ is not
+   compact.
+
+\textit{Solution.}
+hey
+
+\end{document}
