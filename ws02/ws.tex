@@ -43,11 +43,52 @@
    in $[0, 1]$? Is $E$ compact? Is $E$ perfect?
 
 \textit{Solution.}
-hey
+$E$ is uncountable. To prove this, we will show that for any countable
+subset $X \subseteq E$, $X \neq E$. Let $X$ be a countable subset of $E$
+and represent $X$ as a (possibly infinite) sequence $X = \cbr{x_1, x_2,
+\ldots}$. We will show that there exists an element $y \in E$ such that
+$y \not\in X$. Let the decimal expansion of $y$ be
+%
+\begin{equation*}
+    y = 0 . d_1 d_2 \ldots
+    ,
+\end{equation*}
+%
+where for each $i = 1, 2, \ldots$, $d_i = 4$ if the $i$th decimal
+position of $x_i$ is $7$, or $d_i = 7$ if the $i$th decimal position of
+$x_i$ is $4$. Clearly $y \in E$, but since $y$ disagrees with each $x_i$
+in the $i$th decimal position, $y \not\in X$. Thus $X \neq E$, and since
+$X$ was an arbitrary countable subset of $E$, it follows that $E$ is not
+countable.
+
+$E$ is not dense in $[0, 1]$. To show why, consider the point $0.9 \in
+[0, 1]$. Here we have that $N_{0.01}(0.9) \cap E = \emptyset$, so $0.9$
+is neither in $E$ nor a limit point of $E$.
+
+$E$ is compact. Here we will use the Heine-Borel theorem. Clearly $E$ is
+bounded. To show that $E$ is closed, let $y \in [0, 1] \setminus E$.
+Since $y \not\in E$, at some $i$th decimal position, the $i$th decimal
+position of $y$ is neither $4$ nor $7$. Let $\alpha = \frac{1}{10^{i +
+1}}$. Then $N_\alpha (y) \cap E = \emptyset$, so $y$ is not a limit
+point of $E$. Thus $E$ is closed. Since $E$ is closed and bounded, it is
+compact.
+
+$E$ is perfect. We have already shown that $E$ is closed, so we just
+need to show that all points $x \in E$ are limit points of $E$. Consider
+any $x \in E$ and $r > 0$. Let $\alpha = \frac{1}{10^{i}}$ where $i$ is
+chosen such that $r > \alpha$. Consider $y \in E$ where the decimal
+expansion of $y$ is identical to $x$ except that the $(i + 1)$th digit
+of $y$ is $4$ is the $(i + 1)$th digit of $x$ is $7$, or the $(i + 1)$th
+digit of $y$ is $7$ if the $(i + 1)$th digit of $x$ is $4$. Then
+$\envert{x - y} = \frac{3}{10^{i + 1}} < \frac{1}{10^i} = \alpha$. Hence
+$y \in N_\alpha (x) \subset N_r(x)$. Since $r$ was arbitrary, it follows
+that $x$ is a limit point of $E$. Since $x$ was arbitrary, it follows
+that all points $x \in E$ are limit points of $E$. Thus, given that
+we've already shown that $E$ is closed, $E$ is perfect.
 
 \newpage
 
-2. Consider the metric space $C([0, 1], d)$ of continuous real-valued
+2. Consider the metric space $\del{C([0, 1]), d}$ of continuous real-valued
    functions on the interval $[0, 1]$ with the sup-norm metric
 %
 \begin{equation*}
@@ -65,7 +106,32 @@ Consider the subset $A$ given by
 Is this subset open? Closed? Compact?
 
 \textit{Solution.}
-hey
+$A$ is not open. Consider the constant-valued function $f: x \mapsto 5$.
+Clearly $f \in A$. However, for any $r > 0$, given the function $g: x
+\mapsto 5 + \frac{r}{2}$, we have that $g \in N_r(f)$ and $g \not\in A$.
+Thus $f$ is not an interior point, so $A$ is not open.
+
+$A$ is closed. To prove this, we will show that $A^c$ is open. Consider
+any $f \in A^c$. Let $t_c \in [0, 1]$ be the point satisfying $\min_{t
+\in [0, 1]} \envert{\,\envert{f(t)} - 5} = \envert{\,\envert{f(t_c)} -
+5} = \alpha$. Note that the continuity of $f$ guarantees that such a
+$t_c$ exists. Then $N_\alpha (f) \subset A^c$, and hence $f$ is an
+interior point of $A^c$. Since $f$ was arbitrary, it follows that $A^c$
+is open, and hence $A$ is closed.
+
+$A$ is not compact. Consider the sequence of functions $\cbr{f_n}$,
+where for each $n$, $f_n: x \mapsto x^n$. Clearly for all $n$, $f_n \in
+A$. However the limit of this sequence
+%
+\begin{equation*}
+    \lim_{n \to \infty} f_n(x) = \begin{cases}
+        0, & x < 1 \\
+        1, & x = 1
+    \end{cases}
+\end{equation*}
+%
+is not continuous, so does not even exist in $C([0, 1])$ (and hence not
+in $A$). Thus $A$ is not compact.
 
 \newpage
 
@@ -75,6 +141,22 @@ hey
    compact.
 
 \textit{Solution.}
-hey
+Let $S \subseteq X$. First we will show that $S$ is open. Consider any $x
+\in S$. Then for any $0 < r < 1$, $N_r(x) = \cbr{x} \subseteq S$, so $x$
+is an interior point of $S$.
+
+To show that $S$ is closed, consider that all punctured neighbourhoods
+with radii $0 < r < 1$ of all points in $X$ are empty, so $S$ cannot
+have any limit points. Hence $S$ is closed.
+
+$A$ is not compact. To see why, consider the open cover
+$\cbr{\cbr{x}}_{x \in [0, 1]}$. Clearly
+%
+\begin{equation*}
+    [0, 1] \subseteq \bigcup_{x \in [0, 1]} \cbr{x}
+    ,
+\end{equation*}
+%
+but this cover does not admit any finite subcover.
 
 \end{document}
