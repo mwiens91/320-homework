@@ -48,7 +48,10 @@ if $M^t M = I$.
 
 \begin{proof}
 
-hey
+Note that we view the space $M$ as $\R^{n^2}$, where the norm $d$ is
+simply the $l^2$ norm; hence we can use Heine-Borel theorem.
+
+\textbf{finish this}
 
 \end{proof}
 
@@ -68,18 +71,75 @@ hey
 
 \begin{proof}
 
-hey
+We need to show that $d$ is a metric of $X$. Let $x, y, z \in X$.
+
+Clearly $d(x, y) \geq 0$. Additionally,
+%
+\begin{align*}
+    &d(x, y) = 0 \\
+    &\iff \envert{x_n - y_n} = 0, \quad \forall n = 1, 2, \ldots \\
+    &\iff x_n = y_n, \quad \forall n = 1, 2, \ldots \\
+    &\iff x = y
+    .
+\end{align*}
+%
+Hence $d$ satisfies the first property of a metric.
+
+To show that $d$ is symmetric, consider that
+%
+\begin{align*}
+    d(x, y)
+        &= \sum_{n = 1}^\infty |x_n - y_n| \\
+        &= \sum_{n = 1}^\infty |y_n - x_n| \\
+        &= d(y, x)
+        .
+\end{align*}
+%
+Now we only need to show that $d$ satisfies the triangle inequality.
+Here we will use the triangle inequality of $|\cdot|$:
+%
+\begin{align*}
+    d(x, y) + d(y, z)
+        &= \sum_{n = 1}^\infty |x_n - y_n| + \sum_{n = 1}^\infty |y_n - z_n| \\
+        &= \sum_{n = 1}^\infty \del{|x_n - y_n| + |y_n - z_n|} \\
+        &\geq \sum_{n = 1}^\infty |x_n - z_n| \\
+        &= d(x, z)
+        .
+\end{align*}
+%
+Therefore $d$ is a metric on $X$ and $(X, d)$ is a metric space.
 
 \end{proof}
 
 (b) Is the subset $A$ of sequences $\cbr{a_n}$ such that $\sum_{n =
 1}^\infty |a_n| \geq 1$ open in $X$? Compact? Prove your assertions.
 
-\begin{proof}
+\textit{Solution.}
+$A$ is not open. Consider the sequence $a = \cbr{a_n}$ where
+%
+\begin{equation*}
+    a_n = \begin{cases}
+        1, &n = 1 \\
+        0, &n > 1.
+    \end{cases}
+\end{equation*}
+%
+Clearly $a \in A$. Now, fix any $r > 0$, and let $\alpha =
+\max\cbr{1, r}$. Consider the sequence $b = \cbr{b_n}$ where
+%
+\begin{equation*}
+    b_n = \begin{cases}
+        1 - \frac{\alpha}{2}, &n = 1 \\
+        0, &n > 1.
+    \end{cases}
+\end{equation*}
+%
+Now, $\sum_{n = 1}^\infty |b_n| = 1 - \frac{\alpha}{2} < 1$, so $b
+\not\in A$. However $d(a, b) = \frac{\alpha}{2} < r$. Therefore $N_r(a)
+\not\subset A$ for all $r > 0$. Therefore $a$ is not an interior point
+and $A$ is not open.
 
-hey
-
-\end{proof}
+\textbf{need compactness}
 
 \newpage
 
@@ -90,7 +150,23 @@ hey
 
 \begin{proof}
 
-hey
+Let $S \subseteq X$. First we will show that $S$ is open. Consider any
+$x \in S$. Then for any radius $r$ satisfying $0 < r < 1$, $N_r(x) =
+\cbr{x} \subseteq S$, so $x$ is an interior point of $S$.
+
+To show that $S$ is closed, consider that all punctured neighbourhoods
+with radii $r$ satisfying $0 < r < 1$ for all points in $X$ are empty,
+so $S$ cannot have any limit points. Hence $S$ is closed.
+
+$A$ is not compact. To see why, consider the open cover
+$\cbr{\cbr{x}}_{x \in [0, 1]}$. Clearly
+%
+\begin{equation*}
+    [0, 1] \subseteq \bigcup_{x \in [0, 1]} \cbr{x}
+    ,
+\end{equation*}
+%
+but this cover does not admit any finite subcover.
 
 \end{proof}
 
