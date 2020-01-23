@@ -112,12 +112,16 @@ Clearly $f \in A$. However, for any $r > 0$, given the function $g: x
 Thus $f$ is not an interior point, so $A$ is not open.
 
 $A$ is closed. To prove this, we will show that $A^c$ is open. Consider
-any $f \in A^c$. Let $t_c \in [0, 1]$ be the point satisfying $\min_{t
-\in [0, 1]} \envert{\,\envert{f(t)} - 5} = \envert{\,\envert{f(t_c)} -
-5} = \alpha$. Note that the continuity of $f$ guarantees that such a
-$t_c$ exists. Then $N_\alpha (f) \subset A^c$, and hence $f$ is an
-interior point of $A^c$. Since $f$ was arbitrary, it follows that $A^c$
-is open, and hence $A$ is closed.
+any $f \in A^c$. Let
+%
+\begin{equation*}
+    \alpha = \max_{t \in [0, 1]}\envert{f(t)} - 5
+    .
+\end{equation*}
+%
+Then $N_\alpha (f) \subset A^c$, and hence $f$ is an interior point
+of $A^c$. Since $f$ was arbitrary, it follows that $A^c$ is open, and
+hence $A$ is closed.
 
 $A$ is compact, although I'm not sure how to prove that it is.
 
