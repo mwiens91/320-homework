@@ -54,7 +54,8 @@ simply the $l^2$ norm. We can do this through a bijection $f: M \to
 \in \R^{n^2}$ where each matrix entry $A_{ij}$ is the same as the entry
 $v_{n (i - 1) + j}$. Hence we can use Heine Borel here.
 
-Let $E \subset M$ denote the set of orthogonal $n \times n$ matrices.
+Let $E \subset M$ denote the set of orthogonal $n \times n$ matrices and
+$F = f(E) \subset \R^{n^2}$.
 
 To show that $E$ is bounded, consider any $A \in E$. Since $A^t A = I$,
 we have that for each row $i = 1, \ldots, n$,
@@ -86,7 +87,45 @@ $0$, we have that for all $A \in E$,
 %
 Thus $E$ is bounded.
 
-\textbf{need to show closed}
+To show that $E$ is closed. Consider
+any convergent sequence $S = \cbr{A_n} \subset M$ where
+%
+\begin{equation*}
+    \lim_{n \to \infty} A_n = A
+    ,
+\end{equation*}
+%
+where for each $n$, $A_n \in E$ and also $A \in M$. Consider the
+function $g: M \to R$ given by
+%
+\begin{equation*}
+    g(A) = d(A^t A, 0)
+    .
+\end{equation*}
+%
+Since $g$ is a polynomial in the entries of its argument, it is continuous. Therefore,
+%
+\begin{align*}
+    &g \del{\lim_{n \to \infty} A_n} = g(A) \\
+    &\implies \lim_{n \to \infty} g(A_n) = g(A)
+    .
+\end{align*}
+%
+Hence for all $\epsilon > 0$ there exists an $n$ such that
+%
+\begin{align*}
+    &\envert{g(A_n) - g(A)} < \epsilon \\
+    &\implies \envert{I - A^t A } < \epsilon
+    .
+\end{align*}
+%
+We can conclude that $A^t A = I$ and thus $A$ is orthogonal. Since the
+convergent sequence $S$ was arbitrary, it follows that every convergent
+sequence in $M$ converges to an element of $E$. Therefore $E$ contains
+all its limit points and hence is closed.
+
+Using Heine-Borel and the bijection $f$, we can conclude that $E$ is
+compact.
 
 \end{proof}
 
@@ -174,7 +213,38 @@ Now, $\sum_{n = 1}^\infty |b_n| = 1 - \frac{\alpha}{2} < 1$, so $b
 \not\subset A$ for all $r > 0$. Therefore $a$ is not an interior point
 and $A$ is not open.
 
-\textbf{need compactness}
+However, $A$ is not compact because it is not bounded. To show this,
+suppose for contradiction that $A$ is bounded. Then there is an $M \in
+\R$ and $b \in X$ such that for all $a \in A$, $d(a, b) < M$.
+%
+Then for all $a \in A$,
+%
+\begin{equation*}
+    \sum_{n = 1}^\infty |a_n - b_n| < M
+    .
+\end{equation*}
+%
+Consider the sequence $\alpha \in A$ where
+%
+\begin{equation*}
+    \alpha_n = \begin{cases}
+        b_n + M, &n = 1 \\
+        b_n, &n > 1
+    \end{cases}
+    .
+\end{equation*}
+%
+Then
+%
+\begin{align*}
+    d(\alpha, b)
+        &= \sum_{n = 1}^\infty |\alpha_n - b_n| \\
+        &= M \\
+        &\not< M
+    ,
+\end{align*}
+%
+which contradicts our assumption that $A$ is bounded. Hence $A$ is not bounded, and is compact.
 
 \newpage
 
