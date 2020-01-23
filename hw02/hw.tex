@@ -49,9 +49,44 @@ if $M^t M = I$.
 \begin{proof}
 
 Note that we view the space $M$ as $\R^{n^2}$, where the norm $d$ is
-simply the $l^2$ norm; hence we can use Heine-Borel theorem.
+simply the $l^2$ norm. We can do this through a bijection $f: M \to
+\R^{n^2}$ which takes in a matrix $A \in M$ and returns an element $v
+\in \R^{n^2}$ where each matrix entry $A_{ij}$ is the same as the entry
+$v_{n (i - 1) + j}$. Hence we can use Heine Borel here.
 
-\textbf{finish this}
+Let $E \subset M$ denote the set of orthogonal $n \times n$ matrices.
+
+To show that $E$ is bounded, consider any $A \in E$. Since $A^t A = I$,
+we have that for each row $i = 1, \ldots, n$,
+%
+\begin{equation*}
+    \sum_{j = 1}^n A_{ij}^2 = 1
+    .
+\end{equation*}
+%
+Summing over all rows, we have
+%
+\begin{equation*}
+    \sum_{i, j = 1}^n A_{ij}^2 = n
+    .
+\end{equation*}
+%
+Therefore, if we denote $0 \in M$ as the matrix whose entries are all
+$0$, we have that for all $A \in E$,
+%
+\begin{align*}
+    d(A, 0)
+        &= \sqrt{\sum_{i, j = 1}^n |A_{i j} - 0_{i j}|^2} \\
+        &= \sqrt{\sum_{i, j = 1}^n |A_{i j}|^2} \\
+        &= \sqrt{\sum_{i, j = 1}^n A_{i j}^2} \\
+        &= \sqrt{n} \\
+        &< \sqrt{n} + 1
+        .
+\end{align*}
+%
+Thus $E$ is bounded.
+
+\textbf{need to show closed}
 
 \end{proof}
 
