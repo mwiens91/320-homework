@@ -1,0 +1,115 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Number sets
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{MATH 320 Homework 3} \\
+\textbf{Matt Wiens \#301294492} \\
+\textbf{2020-01-31}
+
+1. Consider the usual Euclidean metric space $(\R, d_2)$. For each $n
+   \in \N$, we define the function
+%
+\begin{equation*}
+    f_n(x) \coloneqq
+        \begin{cases}
+            1 ,& n \leq x < n + 1 \\
+            0 ,& \text{otherwise}
+        \end{cases}
+    .
+\end{equation*}
+%
+Define the sequence $\cbr{c_n}_{n \in \N}$ by
+%
+\begin{equation*}
+    c_n \coloneqq \int_{\R} f_n(x) \dif x
+    .
+\end{equation*}
+%
+Does the sequence $\cbr{c_n}$ converge? What is the limit?
+
+\textit{Solution.}
+
+\newpage
+
+2. Consider the same metric space and functions $f_n$ as in the previous
+   question. Fix $x^* \in \R$, and denote
+%
+\begin{equation*}
+    f(x^*) \coloneqq \lim_{n \to \infty} f_n(x^*)
+    .
+\end{equation*}
+%
+What is $f(x^*)$? What is $\int_{\R} f(x^*) \dif x$?
+
+\textit{Solution.}
+
+\newpage
+
+3. Let $X$ denote the set of real sequences $\cbr{a_n}$ for which
+   $\sum_{n = 1}^\infty |a_n| < +\infty$. Let $d_1$ and $d_{\infty}$ be
+   the metrics on $X$ given as
+%
+\begin{align*}
+    d_1(x,y) &\coloneqq \sum_{n = 1}^\infty |x_n-y_n|, \\
+    d_{\infty}(x,y) &\coloneqq \sup_{n \in \N} |x_n - y_n|,
+\end{align*}
+%
+for all $x = \cbr{x_n}, y = \cbr{y_n} \in X$.
+
+(a) Confirm these are both metrics.
+
+\begin{proof}
+\end{proof}
+
+(b) Show that there are sequences $\cbr{x_k}$ in $X$ which converge in
+$(X, d_{\infty})$ but fail to converge in $(X, d_1)$.
+
+\begin{proof}
+\end{proof}
+
+(c) Show that if $\cbr{x_n}$ converges in $(X, d_1)$ then it
+automatically converges in $(X, d_{\infty})$.
+
+\begin{proof}
+\end{proof}
+
+(d) If $(X, d)$ is a complete metric space, prove that $(X, \tilde{d})$
+is also complete, where $\tilde{d} \coloneqq \frac{d}{1 + d}$. Prove
+that if $(X, \tilde{d})$ is complete, then so is $(X, d)$.
+
+\begin{proof}
+\end{proof}
+
+\end{document}
