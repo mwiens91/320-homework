@@ -60,6 +60,20 @@ Define the sequence $\cbr{c_n}_{n \in \N}$ by
 Does the sequence $\cbr{c_n}$ converge? What is the limit?
 
 \textit{Solution.}
+Note that for each $n \in \N$,
+%
+\begin{equation*}
+    c_n = \int_{\R} f_n(x) \dif x = \int_{n}^{n + 1} \dif x = 1
+    .
+\end{equation*}
+%
+Hence $\cbr{c_n}$ is a constant sequence whose members are all $1$;
+therefore, it clearly converges where
+%
+\begin{equation*}
+    \lim_{n \to \infty} c_n = 1
+    .
+\end{equation*}
 
 \newpage
 
@@ -73,7 +87,22 @@ Does the sequence $\cbr{c_n}$ converge? What is the limit?
 %
 What is $f(x^*)$? What is $\int_{\R} f(x^*) \dif x$?
 
-\textit{Solution.}
+\textit{Solution.} Fix $x^* \in \R$. Then we that
+%
+\begin{equation*}
+    f(x^*) = \lim_{n \to \infty} f_n(x^*) = 0
+    ,
+\end{equation*}
+%
+since there exists $m \in \N$ such that $m > x^*$, and thus for all $n
+\geq m$, $f_n(x^*) = 0$. Therefore
+%
+\begin{equation*}
+    \int_{\R} f(x^*) \dif x
+    = \int_{\R} 0 \dif x
+    = 0
+    .
+\end{equation*}
 
 \newpage
 
@@ -91,6 +120,96 @@ for all $x = \cbr{x_n}, y = \cbr{y_n} \in X$.
 (a) Confirm these are both metrics.
 
 \begin{proof}
+
+We will show that both $d_1$ and $d_\infty$ are metrics by verifying
+that they each satisfy all three properties sufficient for them to be
+metrics. Fix $x = \cbr{x_n}, y = \cbr{y_n}, z = \cbr{z_n} \in X$.
+
+We'll first consider $d_1$.
+
+\textbf{Property 1}
+
+Clearly $d_1(x, y) \geq 0$. Additionally, we have that
+%
+\begin{align*}
+    &d_1(x, y) = 0 \\
+    &\iff \sum_{n = 1}^\infty \envert{x_n - y_n} = 0 \\
+    &\iff \envert{x_n - y_n} = 0, \quad \forall n = 1, 2, \ldots \\
+    &\iff x_n = y_n, \quad \forall n = 1, 2, \ldots \\
+    &\iff x = y
+    .
+\end{align*}
+%
+\textbf{Property 2}
+
+To show that $d_1$ is symmetric, consider that
+%
+\begin{align*}
+    d_1(x, y)
+        &= \sum_{n = 1}^\infty |x_n - y_n| \\
+        &= \sum_{n = 1}^\infty |y_n - x_n| \\
+        &= d_1(y, x)
+        .
+\end{align*}
+%
+\textbf{Property 3}
+
+Now we need to show that $d_1$ satisfies the triangle inequality.
+Here we will use the triangle inequality of $|\cdot|$:
+%
+\begin{align*}
+    d_1(x, y) + d_1(y, z)
+        &= \sum_{n = 1}^\infty |x_n - y_n| + \sum_{n = 1}^\infty |y_n - z_n| \\
+        &= \sum_{n = 1}^\infty \del{|x_n - y_n| + |y_n - z_n|} \\
+        &\geq \sum_{n = 1}^\infty |x_n - z_n| \\
+        &= d_1(x, z)
+        .
+\end{align*}
+%
+Since $d_1$ satisfies all three properties, $d_1$ is a metric on $X$.
+
+Now we'll consider $d_2$.
+
+\textbf{Property 1}
+
+Clearly $d_2(x, y) \geq 0$. Additionally, we have that
+%
+\begin{align*}
+    &d_2(x, y) = 0 \\
+    &\iff \sup_{n \in \N} |x_n - y_n| = 0 \\
+    &\iff x_n = y_n, \quad \forall n = 1, 2, \ldots \\
+    &\iff x = y
+    .
+\end{align*}
+%
+\textbf{Property 2}
+
+To show that $d_2$ is symmetric, consider that
+%
+\begin{align*}
+    d_2(x, y)
+        &\iff \sup_{n \in \N} |x_n - y_n| = 0 \\
+        &\iff \sup_{n \in \N} |y_n - x_n| = 0 \\
+        &= d_2(y, x)
+        .
+\end{align*}
+%
+\textbf{Property 3}
+
+Now we need to show that $d_2$ satisfies the triangle inequality.
+%Here we will use the triangle inequality of $|\cdot|$:
+%%
+%\begin{align*}
+%    d_1(x, y) + d_1(y, z)
+%        &= \sum_{n = 1}^\infty |x_n - y_n| + \sum_{n = 1}^\infty |y_n - z_n| \\
+%        &= \sum_{n = 1}^\infty \del{|x_n - y_n| + |y_n - z_n|} \\
+%        &\geq \sum_{n = 1}^\infty |x_n - z_n| \\
+%        &= d_1(x, z)
+%        .
+%\end{align*}
+%%
+%Since $d_1$ satisfies all three properties, $d_1$ is a metric on $X$.
+
 \end{proof}
 
 (b) Show that there are sequences $\cbr{x_k}$ in $X$ which converge in
