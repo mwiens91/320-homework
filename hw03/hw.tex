@@ -168,14 +168,14 @@ Here we will use the triangle inequality of $|\cdot|$:
 %
 Since $d_1$ satisfies all three properties, $d_1$ is a metric on $X$.
 
-Now we'll consider $d_2$.
+Now we'll consider $d_\infty$.
 
 \textbf{Property 1}
 
-Clearly $d_2(x, y) \geq 0$. Additionally, we have that
+Clearly $d_\infty(x, y) \geq 0$. Additionally, we have that
 %
 \begin{align*}
-    &d_2(x, y) = 0 \\
+    &d_\infty(x, y) = 0 \\
     &\iff \sup_{n \in \N} |x_n - y_n| = 0 \\
     &\iff x_n = y_n, \quad \forall n = 1, 2, \ldots \\
     &\iff x = y
@@ -184,44 +184,125 @@ Clearly $d_2(x, y) \geq 0$. Additionally, we have that
 %
 \textbf{Property 2}
 
-To show that $d_2$ is symmetric, consider that
+To show that $d_\infty$ is symmetric, consider that
 %
 \begin{align*}
-    d_2(x, y)
+    d_\infty(x, y)
         &\iff \sup_{n \in \N} |x_n - y_n| = 0 \\
         &\iff \sup_{n \in \N} |y_n - x_n| = 0 \\
-        &= d_2(y, x)
+        &= d_\infty(y, x)
         .
 \end{align*}
 %
 \textbf{Property 3}
 
-Now we need to show that $d_2$ satisfies the triangle inequality.
-%Here we will use the triangle inequality of $|\cdot|$:
-%%
-%\begin{align*}
-%    d_1(x, y) + d_1(y, z)
-%        &= \sum_{n = 1}^\infty |x_n - y_n| + \sum_{n = 1}^\infty |y_n - z_n| \\
-%        &= \sum_{n = 1}^\infty \del{|x_n - y_n| + |y_n - z_n|} \\
-%        &\geq \sum_{n = 1}^\infty |x_n - z_n| \\
-%        &= d_1(x, z)
-%        .
-%\end{align*}
-%%
-%Since $d_1$ satisfies all three properties, $d_1$ is a metric on $X$.
+Now we need to show that $d_\infty$ satisfies the triangle inequality.
+Here we will again use the triangle inequality of $|\cdot|$:
+%
+\begin{align*}
+    d_\infty(x, y) + d_\infty(y, z)
+        &= \sup_{n \in \N} |x_n - y_n| + \sup_{n \in \N} |y_n - z_n| \\
+        &\geq \sup_{n \in \N} \del{|x_n - y_n| + |y_n - z_n|} \\
+        &\geq \sup_{n \in \N} |x_n - z_n| \\
+        &= d_\infty(x, z)
+        .
+\end{align*}
+%
+Since $d_\infty$ satisfies all three properties, $d_\infty$ is also a  metric on
+$X$.
 
 \end{proof}
+
+\newpage
 
 (b) Show that there are sequences $\cbr{x_k}$ in $X$ which converge in
 $(X, d_{\infty})$ but fail to converge in $(X, d_1)$.
 
 \begin{proof}
+
+Consider the sequence $s = \cbr{x_k}$ where
+%
+\begin{equation*}
+    x_k = \cbr{x_{kn}}
+    ,
+\end{equation*}
+%
+where
+%
+\begin{equation*}
+    x_{kn} = \begin{cases}
+        \frac{1}{k}, &k \leq n \\
+        0, &k > n
+    \end{cases}
+    .
+\end{equation*}
+%
+Letting $0 \in X$ be the zero sequence, we have for any $\epsilon > 0$,
+that for all $k > \frac{1}{\epsilon}$,
+%
+\begin{equation*}
+    d_\infty(x_k, 0) = \sup_{n \in \N} |x_{kn} - 0| = \frac{1}{k} < \epsilon
+    .
+\end{equation*}
+%
+So in $(X, d_\infty)$, $\cbr{x_k} \to 0$. If $s$ converges in $(X,
+d_1)$, it must converge to $0$ (this follows directly from part (c)
+below). Suppose that $s$ does converge in $(X, d_1)$. Then for any
+$\epsilon > 0$ with $\epsilon < 1$ there exists $N \in \N$ such that for all $k \geq N$,
+%
+\begin{equation*}
+    d_1(x_k, 0) < \epsilon
+    .
+\end{equation*}
+%
+However
+%
+\begin{equation*}
+    d_1(x_k, 0)
+        = \sum_{n = 1}^\infty |x_{kn} - 0|
+        = \sum_{n = 1}^\infty x_{kn}
+        = \sum_{n = 1}^k \frac{1}{k}
+        = 1
+        \not< \epsilon
+    .
+\end{equation*}
+%
+Hence $s$ does not converge to $0$ in $(X, d_1)$, and, following our
+earlier remarks, does not converge to any limit in this space.
+
 \end{proof}
+
+\newpage
 
 (c) Show that if $\cbr{x_n}$ converges in $(X, d_1)$ then it
 automatically converges in $(X, d_{\infty})$.
 
 \begin{proof}
+
+Suppose $x = \cbr{x_n}$ converges in $(X, d_1)$. Since each $x_n \in X$,
+we can write $x_n = \cbr{a_{nk}} = \cbr{a_{n1}, a_{n2}, \ldots}$.
+Suppose that in $(X, d_1)$, $x$ converges to $y = \cbr{y_k}$. Then for
+any $\epsilon > 0$ there exists $N \in \N$ such that for all $n \geq N$,
+%
+\begin{equation*}
+    d_1(x_n, y)
+    = \sum_{k = 1}^\infty |a_{nk} - y_k|
+    < \epsilon
+    ;
+\end{equation*}
+%
+but
+%
+\begin{equation*}
+    d_\infty(x_n, y)
+    = \sup_{k \in \N} |a_{nk} - y_k|
+    \leq \sum_{k = 1}^\infty |a_{nk} - y_k|
+    < \epsilon
+    ,
+\end{equation*}
+%
+so $x$ also converges in $(X, d_\infty)$.
+
 \end{proof}
 
 (d) If $(X, d)$ is a complete metric space, prove that $(X, \tilde{d})$
@@ -229,6 +310,102 @@ is also complete, where $\tilde{d} \coloneqq \frac{d}{1 + d}$. Prove
 that if $(X, \tilde{d})$ is complete, then so is $(X, d)$.
 
 \begin{proof}
+
+Suppose $(X, d)$ is a complete metric space. Let $s = \cbr{x_n}$ be any
+Cauchy sequence in $(X, \tilde{d})$. Then, for any $\epsilon > 0$
+there exists $N \in \N$ such that for all $m, n \geq N$,
+%
+\begin{equation*}
+    \tilde{d}(x_n, x_m) < \frac{\epsilon}{1 + \epsilon}
+    .
+\end{equation*}
+%
+This implies that
+%
+\begin{equation*}
+    \tilde{d}(x_n, x_m)
+        = \frac{d(x_n, x_m)}{1 + d(x_n, x_m)}
+        < \frac{\epsilon}{1 + \epsilon}
+        ,
+\end{equation*}
+%
+which further implies that
+%
+\begin{equation*}
+    d(x_n, x_m) < \epsilon
+    .
+\end{equation*}
+%
+So $s$ is also a Cauchy sequence in $(X, d)$. Since $(X, d)$ is
+complete, there exists $x \in X$ such that in $(X, d)$, $\cbr{x_n} \to
+x$. Thus for any $\epsilon > 0$ exists $M \in \N$, such that for
+all $n \geq M$,
+%
+\begin{equation*}
+    d(x_n, x) < \epsilon
+    ,
+\end{equation*}
+%
+which implies that
+%
+\begin{equation*}
+    \tilde{d}(x_n, x)
+        = \frac{d(x_n, x)}{1 + d(x_n, x)} < d(x_n, x) < \epsilon
+    .
+\end{equation*}
+%
+Therefore $\cbr{x_n} \to x$ in $(X, \tilde{d})$. Since $s$ was an
+arbitrary Cauchy sequence in $(X, \tilde{d})$, it follows that $(X,
+\tilde{d})$ is complete if $(X, d)$ is complete.
+
+The other direction is proved similarly. Suppose that $(X, \tilde{d})$
+is complete, and let $s = \cbr{x_n}$ be any Cauchy sequence in $(X, d)$.
+Then, for any $\epsilon > 0$ there exists $N \in \N$ such that for all
+$m, n \geq N$,
+%
+\begin{equation*}
+    d(x_n, x_m) < \epsilon
+    .
+\end{equation*}
+%
+But
+%
+\begin{equation*}
+    \tilde{d}(x_n, x_m)
+        = \frac{d(x_n, x_m)}{1 + d(x_n, x_m)} < d(x_n, x_m) < \epsilon
+    ,
+\end{equation*}
+%
+so $s$ is also Cauchy in $(X, \tilde{d})$. Since $(X, \tilde{d})$ is
+complete, it follows that in this space there exists $x \in X$ such that
+$\cbr{x_n} \to x$. Therefore, for any $\epsilon > 0$ there exists $M \in \N$
+such that for all $n \geq M$,
+%
+\begin{equation*}
+    \tilde{d}(x_n, x) < \frac{\epsilon}{1 + \epsilon}
+    .
+\end{equation*}
+%
+This implies that
+%
+\begin{equation*}
+    \tilde{d}(x_n, x)
+        = \frac{d(x_n, x)}{1 + d(x_n, x)}
+        < \frac{\epsilon}{1 + \epsilon}
+        ,
+\end{equation*}
+%
+and so
+%
+\begin{equation*}
+    d(x_n, x) < \epsilon
+    .
+\end{equation*}
+%
+Therefore, $\cbr{x_n} \to x$ in $(X, d)$. Since $s$ was an arbitrary
+Cauchy sequence in $(X, d)$, it follows that $(X, d)$ is complete is
+$(X, \tilde{d})$ also is.
+
 \end{proof}
 
 \end{document}
