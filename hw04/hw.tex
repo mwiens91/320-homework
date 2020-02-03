@@ -44,6 +44,39 @@ convergent, where the function $f$ is defined by $f(x) \coloneqq x^2$.
 
 \begin{proof}
 
+Fix any $\epsilon > 0$. Since $(\R, d_2)$ is complete, $\cbr{x_n} \to x$
+for some $x \in \R$. Therefore, there exists $M \in \N$ such that for
+all $n \geq M$,
+%
+\begin{equation*}
+    d_2(x_n, x) = |x_n - x| < \epsilon
+    .
+\end{equation*}
+%
+Since $\cbr{x_n}$ is Cauchy there is an $N \in \N$ such that for all $n,
+m \geq N$,
+%
+\begin{equation*}
+    d_2(x_n, x_m) = |x_n - x_m| < \frac{\epsilon}{2 |x + \epsilon|}
+    .
+\end{equation*}
+%
+Let $L = \max \cbr{N, M}$. Then, for all $n, m > L$ we have
+%
+\begin{align*}
+    d_2(f(x_n), f(x_m))
+        &= |x_n^2 - x_m^2| \\
+        &= |x_n - x_m| \, |x_n + x_m| \\
+        &= |x_n - x_m| \, |2x + (x_n - x) + (x_m - x)| \\
+        &\leq |x_n - x_m| \, |2x + |x_n - x| + |x_m - x|| \\
+        &< \frac{\epsilon}{2 |x + \epsilon|} |2x + 2\epsilon| \\
+        &= \epsilon
+        .
+\end{align*}
+%
+Therefore $\cbr{f(x_n)}$ is Cauchy, and since $(\R, d_2)$ is complete,
+the sequence is also convergent.
+
 \end{proof}
 
 \newpage
@@ -61,17 +94,161 @@ $(\N, d_2)$.
 
 \begin{proof}
 
+First, note that we can write $d_2$ in terms of $d_1$ as
+%
+\begin{equation*}
+    d_2(n, m) = \frac{d_1(n, m)}{n m}
+    .
+\end{equation*}
+Now, suppose a set $A \subseteq \N$ is open in $(\N, d_1)$. Then,
+consider any point $a \in A$. Since $A$ is open, there exists an $r > 0$
+such that for all $b \in \N$ satisfying $d_1(a, b) < r$, $b \in A$.
+
+Let $r^\prime = \frac{1}{r}$. Now consider all points $b \in
+\N$ satisfying $d_2(a, b) < r^\prime$. For these points we have
+%
+\begin{align*}
+    &d_2(a, b) < r^\prime \\
+    &\iff \frac{d_1(a, b)}{a b} < \frac{1}{r} \\
+    &\iff d_1(a, b) < r a b  \\
+    &\implies d_1(a, b) < r
+\end{align*}
+%
+which further implies that $b \in A$. Therefore $a$ is an interior point
+of $A$ in $(\N, d_2)$. Since $a$ was an arbitrary point of $A$, it
+follows that $A$ is open in $(\N, d_2)$
+
+Now suppose $A \subseteq \N$ is open in $(\N, d_2)$. Then for every
+point $a \in A$ there is an $r > 0$ such that for all $b \in \N$,
+$d_2(a, b) < r$ implies $b \in A$.
+%
+Consider all points $b \in \N$ satisfying $d_1(a, b) < r$. For these
+points we have
+%
+\begin{align*}
+    &d_1(a, b) < r \\
+    &\iff a b \, d_2(a, b) < r \\
+    &\iff d_2(a, b) < r \frac{1}{a b} \\
+    &\implies d_2(a, b) < r
+\end{align*}
+%
+which further implies that $b \in A$. Given that $a$ was arbitrary and
+that we showed it was an interior point of $A$, it follows that $A$ is
+open in $(\N, d_1)$.
+
 \end{proof}
 
-(b) Prove that a sequence converges in $(\N, d_1)$ if and only if it converges in $ (\N, d_2)$.
+\newpage
+
+(b) Prove that a sequence converges in $(\N, d_1)$ if and only if it
+converges in $(\N, d_2)$.
 
 \begin{proof}
 
+Suppose a sequence $\cbr{a_n}$ converges in $(\N, d_1)$ to some $a \in
+\N$. Then for any $\epsilon > 0$, there exists an $N \in \N$ such that
+for all $n \geq N$,
+%
+\begin{equation*}
+    d_1(a_n, a) < \epsilon
+    .
+\end{equation*}
+%
+But then
+%
+\begin{align*}
+    &d_1(a_n, a) < \epsilon \\
+    &\iff a_n a \, d_2(a_n, a) < \epsilon \\
+    &\implies d_2(a_n, a) < \epsilon
+    ,
+\end{align*}
+%
+so $\cbr{a_n}$ also converges in $(\N, d_2)$.
+
+Now suppose $\cbr{a_n}$ is a convergent sequence in $(\N, d_2)$ which
+converges to some $a \in \N$. Then for any $\epsilon > 0$ there exists
+an $N \in \N$ so that for all $n \geq N$,
+%
+\begin{equation*}
+    d_2(a_n, a) < \frac{\epsilon}{a R}
+    ,
+\end{equation*}
+%
+where
+%
+\begin{equation*}
+    R = \frac{1}{\frac{1}{a} - \epsilon} > a_n
+    .
+\end{equation*}
+%
+(this is the largest number $R$ satisfying $d_2(R, a) = \epsilon$).
+
+Then we have
+%
+\begin{align*}
+    &d_2(a_n, a) = \envert{\frac{1}{a_n} - \frac{1}{a} }< \epsilon \\
+    &\iff \frac{d_1(a_n, a)}{a_n a} < \epsilon \\
+    &\implies d_1(a_n, a) < \epsilon
+    ,
+\end{align*}
+%
+so $\cbr{a_n}$ also converges in $(\N, d_2)$.
+
 \end{proof}
+
+\newpage
 
 (c) Finally prove that $(\N, d_1)$ is complete, but $(\N, d_2)$ is not.
 
 \begin{proof}
+
+First we will show that $(\N, d_1)$ is complete. Consider any Cauchy
+sequence $\cbr{x_n}$ in $(\N, d_1)$. Then for $\epsilon > 0$ with
+$\epsilon < 1$ there exists an $N \in \N$ such that for all $m, n \geq
+N$,
+%
+\begin{equation*}
+    d_1(x_m, x_n) = |x_m - x_n| < \epsilon
+    .
+\end{equation*}
+%
+But since $x_m, x_n \in \N$ the only way to satisfy $|x_m - x_n| < 1$ is
+if $x_m = x_n$ for all $m, n \geq N$. Call this constant value $x$. Then
+we have that for any $\epsilon > 0$, that for all $n \geq N$ (using the
+same $N$ as above), $|x_n - x| = 0 < \epsilon$. Hence the Cauchy
+sequence converges, and, since the sequence was arbitrary, it follows
+that $(\N, d_1)$ is complete.
+
+Now we will show that $(\N, d_2)$ is not complete. Consider the Cauchy
+sequence $s = \cbr{x_n} = \cbr{n}_{n \in \N}$. To show that this
+sequence is Cauchy, fix any $\epsilon > 0$. Then let $N = \lceil
+\frac{2}{\epsilon} \rceil$. For all $n, m \geq N$, we thus have
+%
+\begin{align*}
+    d_2(x_n, x_m)
+        &= \envert{ \frac{1}{n} - \frac{1}{m} } \\
+        &< \frac{1}{n} + \frac{1}{m} \\
+        &< \frac{1}{N} + \frac{1}{N} \\
+        &< \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+        &= \epsilon
+        .
+\end{align*}
+%
+However, $s$ fails to converge in $(\N, d_1)$. Suppose for contradiction
+that $s$ did converge in $(\N, d_1)$ to some $x \in \N$. Then for any
+$\epsilon > 0$ with $\epsilon < 1$ there would be $N \in \N$ such that
+for all $n \geq N$
+%
+\begin{equation*}
+    |n - x| < 1
+    .
+\end{equation*}
+%
+However, this this is clearly false whenever $n \neq x$, so we have
+achieved a contradiction and shown that $s$ does not converge in $(\N,
+d_1)$. Following the result from part (b) of this problem, we can
+conclude that $s$ does not converge in $(\N, d_2)$, and hence $(\N,
+d_2)$ is not complete.
 
 \end{proof}
 
@@ -90,7 +267,46 @@ Prove that $\cbr{x_n}$ is a Cauchy sequence.
 
 \begin{proof}
 
+Fix any $\epsilon > 0$. Let $N = 1$ if $\epsilon \geq 4$ else let $N =
+\lceil - \log_2 \frac{\epsilon}{4} \rceil$. Then, consider all $n, m
+\geq N$. If $n = m$ then clearly $|x_n - x_m| = 0$. Suppose that,
+without loss of generality, $n \geq m$ and $n - m = k > 0$. Then we have
+%
+\begin{align*}
+    |x_n - x_m|
+        &= |(x_n - x_{n - 1}) + (x_{n - 1} - x_{n - 2}) + \cdots + (x_{n - k + 1} - x_m)| \\
+        &\leq \sum_{i = 0}^{k - 1} |x_{n - i} - x_{n - i - 1}| \\
+        &< \sum_{i = 0}^{k - 1} \frac{1}{2^{n - i - 1}} \\
+        &= \frac{2^{n - m} - 1}{2^{n - 1}} \\
+        &= 2 (2^{-n} + 2^{-m}) \\
+        &< 4 \cdot 2^{-N}
+        .
+\end{align*}
+%
+\textbf{Case 1: $\epsilon \geq 4$}. Then we have $N = 1$, and so
+%
+\begin{equation*}
+    |x_n - x_m| < 4 \cdot 2^{-1} = 2 < \epsilon
+        .
+\end{equation*}
+
+\textbf{Case 2: $\epsilon < 4$}. Then we have $N = \lceil - \log_2
+\frac{\epsilon}{4} \rceil$, and so
+%
+\begin{equation*}
+    |x_n - x_m|
+        < 4 \cdot 2^{- \del{\lceil - \log_2 \frac{\epsilon}{4} \rceil}}
+        < 4 \cdot 2^{- \del{- \log_2 \frac{\epsilon}{4}}}
+        < \epsilon
+        .
+\end{equation*}
+
+In all cases, we have that $|x_n - x_m| < \epsilon$ for $n, m > N$.
+Hence $\cbr{x_n}$ is Cauchy.
+
 \end{proof}
+
+\newpage
 
 (b) Is the result in (a) true if we only had
 %
@@ -100,6 +316,41 @@ Prove that $\cbr{x_n}$ is a Cauchy sequence.
 \end{equation*}
 
 \begin{proof}
+
+In this case, the sequence is no longer guaranteed to be Cauchy.
+Take the example of the sequence $\cbr{x_n}$ whose terms are given by
+%
+\begin{equation*}
+    x_{n + 1} = x_n - \frac{1}{2 n}
+    .
+\end{equation*}
+%
+Suppose for contradiction that this sequence  was Cauchy. Then for any
+$\epsilon > 0$ there would be an $N \in \N$ such that $n, m > N$ implies
+that
+%
+\begin{equation*}
+    |x_n - x_m| < \epsilon
+    .
+\end{equation*}
+%
+For a specific example, set $n = N$ and let $m > N$,
+Then
+%
+\begin{align*}
+    |x_N - x_m|
+        &= |(x_N - x_{N + 1}) + (x_{N + 1} - x_{N + 2}) + \cdots + (x_{N + (m - N - 1)} - x_m)| \\
+        &= \envert{ \sum_{i = 0}^{m - N - 1} \del{x_{N + i} - x_{N + i + 1}} } \\
+        &= \envert{ \sum_{i = 0}^{m - N - 1} \frac{1}{2 \del{N + i}} } \\
+        &= \frac{1}{2} \sum_{i = 0}^{m - N - 1} \frac{1}{N + i} \\
+    .
+\end{align*}
+%
+However by setting $m$ sufficiently large, we can make this sum
+arbitrarily large (its corresponding infinite series diverges), and
+hence we can find an $m > N$ such that $|x_N - x_m| > \epsilon$, which
+results in a contradiction. Hence in this case the condition does not
+necessarily guarantee a Cauchy sequence.
 
 \end{proof}
 
