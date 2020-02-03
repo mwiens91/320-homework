@@ -1,0 +1,106 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Number sets
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{MATH 320 Homework 4} \\
+\textbf{Matt Wiens \#301294492} \\
+\textbf{2020-02-07}
+
+1. Suppose $\cbr{x_n}$ is a Cauchy sequence in $(\R, d_2)$ where $d_2$ is
+the usual Euclidean metric. Show that the sequence $\cbr{f(x_n)}$ is
+convergent, where the function $f$ is defined by $f(x) \coloneqq x^2$.
+
+\begin{proof}
+
+\end{proof}
+
+\newpage
+
+2. Consider the set of natural numbers $\N$, with the metric functions
+defined by
+%
+\begin{align*}
+    d_1(n, m) &\coloneqq \envert{n - m}, \\
+    d_2(n, m) &\coloneqq \envert{\frac{1}{n} - \frac{1}{m}}.
+\end{align*}
+%
+(a) Prove that a set is open in $(\N, d_1)$ if and only if it is open in
+$(\N, d_2)$.
+
+\begin{proof}
+
+\end{proof}
+
+(b) Prove that a sequence converges in $(\N, d_1)$ if and only if it converges in $ (\N, d_2)$.
+
+\begin{proof}
+
+\end{proof}
+
+(c) Finally prove that $(\N, d_1)$ is complete, but $(\N, d_2)$ is not.
+
+\begin{proof}
+
+\end{proof}
+
+\newpage
+
+3. Let $\cbr{x_n}$ be a sequence in $\R$ with the standard Euclidean metric.
+
+(a) Suppose that
+%
+\begin{equation*}
+    \envert{x_{n+1} - x_n} < \frac{1}{2^n}, \qquad \forall n \in \N
+    .
+\end{equation*}
+%
+Prove that $\cbr{x_n}$ is a Cauchy sequence.
+
+\begin{proof}
+
+\end{proof}
+
+(b) Is the result in (a) true if we only had
+%
+\begin{equation*}
+    \envert{x_{n+1} - x_n} < \frac{1}{n}, \qquad \forall n \in \N
+    ?
+\end{equation*}
+
+\begin{proof}
+
+\end{proof}
+
+\end{document}
