@@ -15,6 +15,9 @@
 \usepackage{amsthm}
 \usepackage{commath}
 
+% Operators
+\DeclareMathOperator{\diam}{diam}
+
 % Number sets
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\N}{\mathbb{N}}
@@ -56,6 +59,45 @@ Show by the definition of Cauchy sequences that $\cbr{f_n}_{n =
 
 \begin{proof}
 
+Suppose for a contradiction that $\cbr{f_n}_{n = 1}^\infty$ was Cauchy.
+Then for $\epsilon = 0.1$ there would be $N \in \N$ such that for all
+$m, n \geq N$, we would have $d_\infty(f_n, f_m) < \epsilon$. Fix $n = N$.
+
+Consider that
+%
+\begin{equation*}
+    \envert{f_m(x) - f_N(x)}
+        = \frac{1}{N x + 1} - \frac{1}{m x + 1}
+        = \frac{(m - N) x}{(N x + 1) (m x + 1)}
+        .
+\end{equation*}
+%
+Suppse $x = x_m = \frac{1}{m}$. Then
+%
+\begin{equation*}
+    \envert{f_m(x_m) - f_N(x_m)}
+        = \frac{1 - \frac{N}{m}}{2 (\frac{N}{m} + 1)}
+        ;
+\end{equation*}
+%
+if we take the limit as $m \to \infty$ then we clearly have that
+%
+\begin{equation*}
+    \envert{f_m(x_m) - f_N(x_m)} \to \frac{1}{2}
+    .
+\end{equation*}
+%
+Hence by setting $m$ sufficiently high, we can make this difference
+arbitrary close to $1 / 2$, and thus for this same $m$ we would have
+that
+%
+\begin{equation*}
+    d_\infty(f_N, f_m) = \sup_{x \in [0, 1]} |f_N(x) - f_m(x)| > 0.1 = \epsilon
+    .
+\end{equation*}
+%
+This contradicts our assumption that $\cbr{f_n}_{n = 1}^\infty$ was Cauchy.
+
 \end{proof}
 
 \newpage
@@ -64,6 +106,23 @@ Show by the definition of Cauchy sequences that $\cbr{f_n}_{n =
 1}^\infty$ a Cauchy sequence?
 
 \textit{Solution.}
+In this case the sequence $\cbr{f_n}_{n = 1}^\infty$ would be Cauchy.
+For any two elements of this sequence, say $f_n$ and $f_m$ we have that
+, without loss of generality taking $m \geq n$,
+%
+\begin{align*}
+    d_\infty(f_n, f_m)
+        &= \sup_{x \in [1, 2]} |f(x) - g(x)| \\
+        &= \sup_{x \in [1, 2]} \frac{(m - N) x}{(n x + 1) (m x + 1)} \\
+        &= \sup_{x \in [1, 2]} \frac{(\frac{1}{n} - \frac{1}{m}) x}{(x + \frac{1}{n}) (x + \frac{1}{m})}
+    .
+\end{align*}
+%
+Since $x \in [1, 2]$ we can make $(\frac{1}{n} - \frac{1}{m}) x$
+arbitrarily small by setting $n$ and $m$ sufficiently high. Since the
+denominator of the above expression is bounded (it's guaranteed less
+than $25$), it follows we can make the entire expression arbitrarily
+small. Hence in this space, the sequence is Cauchy.
 
 \newpage
 
@@ -71,6 +130,15 @@ Show by the definition of Cauchy sequences that $\cbr{f_n}_{n =
 metric. Is $(X, d)$ complete?
 
 \textit{Solution.}
+This space is complete. Let $S = \cbr{x_n}$ be any Cauchy sequence in
+$(X, d)$. Fix any $\epsilon > 0$ with $\epsilon < 1$. Then there exists
+an $N \in \N$ such that for all $m, n \geq N$, $d(x_n, x_m) < \epsilon <
+1$. But this implies that for all such $m, n$, $x_n = x_m$. Call this
+value $x$.
+
+Then for any $\epsilon > 0$, if $n \geq N$, $d(x_n, x) = 0 < \epsilon$
+so $S$ is a convergent sequence. Since $S$ was an arbitrary Cauchy
+sequence, it follows that $(X, d)$ is complete.
 
 \newpage
 
@@ -78,12 +146,25 @@ metric. Is $(X, d)$ complete?
 complete metric space $(X, d)$. Show that if $E_n \supseteq E_{n+1}$ and
 %
 \begin{equation*}
-    \lim_{n \to \infty} \text{diam } E_n = 0,
+    \lim_{n \to \infty} \diam E_n = 0,
 \end{equation*}
 %
 Then $\cap_{n = 1}^{\infty} E_n$ consists of exactly one point.
 
 \begin{proof}
+
+Denote $E = \cap_{n = 1}^{\infty} E_n$. First we will show that $E$ is
+nonempty. Let $S = \cbr{x_n}$, where $x_n \in E_n$. Fix any $\epsilon >
+0$. Then there exists some $N$ for which $\diam E_N < \epsilon$. Then,
+for all $m, n \geq N$ we have that $d(x_m, x_n) < \epsilon$. Hence $S$
+is Cauchy.
+
+Since $\cbr{x_n}$ is Cauchy, it converges in this space to some $x$. By
+the definition of our sequence, we must have that $x$ is either in all
+$E_n$ or is a limit point of these sets. But since all $E_n$ are closed,
+we must have that $x \in E_n$ for all $n$, and hence $x \in E$.
+
+That $E$ has only one point follows trivially from $\lim_{n \to \infty} \diam E_n = 0$.
 
 \end{proof}
 
