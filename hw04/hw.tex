@@ -36,7 +36,7 @@
 
 \textbf{MATH 320 Homework 4} \\
 \textbf{Matt Wiens \#301294492} \\
-\textbf{2020-02-07}
+\textbf{2020-02-14}
 
 1. Suppose $\cbr{x_n}$ is a Cauchy sequence in $(\R, d_2)$ where $d_2$ is
 the usual Euclidean metric. Show that the sequence $\cbr{f(x_n)}$ is
@@ -100,41 +100,28 @@ First, note that we can write $d_2$ in terms of $d_1$ as
     d_2(n, m) = \frac{d_1(n, m)}{n m}
     .
 \end{equation*}
-Now, suppose a set $A \subseteq \N$ is open in $(\N, d_1)$. Then,
-consider any point $a \in A$. Since $A$ is open, there exists an $r > 0$
-such that for all $b \in \N$ satisfying $d_1(a, b) < r$, $b \in A$.
-
-Let $r^\prime = \frac{1}{r}$. Now consider all points $b \in
-\N$ satisfying $d_2(a, b) < r^\prime$. For these points we have
 %
-\begin{align*}
-    &d_2(a, b) < r^\prime \\
-    &\iff \frac{d_1(a, b)}{a b} < \frac{1}{r} \\
-    &\iff d_1(a, b) < r a b  \\
-    &\implies d_1(a, b) < r
-\end{align*}
-%
-which further implies that $b \in A$. Therefore $a$ is an interior point
-of $A$ in $(\N, d_2)$. Since $a$ was an arbitrary point of $A$, it
-follows that $A$ is open in $(\N, d_2)$
-
-Now suppose $A \subseteq \N$ is open in $(\N, d_2)$. Then for every
+Suppose $A \subseteq \N$ is open in $(\N, d_2)$. Then for every
 point $a \in A$ there is an $r > 0$ such that for all $b \in \N$,
 $d_2(a, b) < r$ implies $b \in A$.
 %
-Consider all points $b \in \N$ satisfying $d_1(a, b) < r$. For these
+Consider all points $c \in \N$ satisfying $d_1(a, c) < r$. For these
 points we have
 %
 \begin{align*}
-    &d_1(a, b) < r \\
-    &\iff a b \, d_2(a, b) < r \\
-    &\iff d_2(a, b) < r \frac{1}{a b} \\
-    &\implies d_2(a, b) < r
+    &d_1(a, c) < r \\
+    &\iff a c \, d_2(a, c) < r \\
+    &\iff d_2(a, c) < r \frac{1}{a c} \\
+    &\implies d_2(a, c) < r
 \end{align*}
 %
-which further implies that $b \in A$. Given that $a$ was arbitrary and
+which further implies that $c \in A$. Given that $a$ was arbitrary and
 that we showed it was an interior point of $A$, it follows that $A$ is
 open in $(\N, d_1)$.
+
+Now, suppose a set $A \subseteq \N$ is open in $(\N, d_1)$.
+
+Not sure how to do
 
 \end{proof}
 
@@ -166,33 +153,23 @@ But then
 so $\cbr{a_n}$ also converges in $(\N, d_2)$.
 
 Now suppose $\cbr{a_n}$ is a convergent sequence in $(\N, d_2)$ which
-converges to some $a \in \N$. Then for any $\epsilon > 0$ there exists
-an $N \in \N$ so that for all $n \geq N$,
+converges to some $a \in \N$. Let $\epsilon > 0$ with $\epsilon <
+\frac{1}{a^2 + a}$. This $\epsilon$ is less than the smallest difference
+between $a$ and any other natural number that is not $a$ in the $d_2$
+metric; that is, the difference between $a$ and $a + 1$ in this metric.
+Then there would exist an $N \in \N$ such that for all $n \geq N$,
 %
 \begin{equation*}
-    d_2(a_n, a) < \frac{\epsilon}{a R}
+    d_2(a_n, a) < \epsilon
     ,
 \end{equation*}
 %
-where
-%
-\begin{equation*}
-    R = \frac{1}{\frac{1}{a} - \epsilon} > a_n
-    .
-\end{equation*}
-%
-(this is the largest number $R$ satisfying $d_2(R, a) = \epsilon$).
+but this implies that $a_n = a$ according to our comments regarding
+$\epsilon$.
 
-Then we have
-%
-\begin{align*}
-    &d_2(a_n, a) = \envert{\frac{1}{a_n} - \frac{1}{a} }< \epsilon \\
-    &\iff \frac{d_1(a_n, a)}{a_n a} < \epsilon \\
-    &\implies d_1(a_n, a) < \epsilon
-    ,
-\end{align*}
-%
-so $\cbr{a_n}$ also converges in $(\N, d_2)$.
+Then, for any $\epsilon > 0$, using this same $N$, we have that for all
+$n \geq N$, $d_1(a_n, a) = 0 < \epsilon$, so $\cbr{a_n}$ also converges
+in $(\N, d_1)$.
 
 \end{proof}
 
