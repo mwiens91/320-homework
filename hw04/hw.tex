@@ -15,6 +15,9 @@
 \usepackage{amsthm}
 \usepackage{commath}
 
+% Operators
+\DeclareMathOperator{\sgn}{sgn}
+
 % Number sets
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\N}{\mathbb{N}}
@@ -98,30 +101,40 @@ First, note that we can write $d_2$ in terms of $d_1$ as
 %
 \begin{equation*}
     d_2(n, m) = \frac{d_1(n, m)}{n m}
-    .
+    ;
 \end{equation*}
 %
-Suppose $A \subseteq \N$ is open in $(\N, d_2)$. Then for every
-point $a \in A$ there is an $r > 0$ such that for all $b \in \N$,
-$d_2(a, b) < r$ implies $b \in A$.
-%
-Consider all points $c \in \N$ satisfying $d_1(a, c) < r$. For these
-points we have
-%
-\begin{align*}
-    &d_1(a, c) < r \\
-    &\iff a c \, d_2(a, c) < r \\
-    &\iff d_2(a, c) < r \frac{1}{a c} \\
-    &\implies d_2(a, c) < r
-\end{align*}
-%
-which further implies that $c \in A$. Given that $a$ was arbitrary and
-that we showed it was an interior point of $A$, it follows that $A$ is
-open in $(\N, d_1)$.
+we will use this fact throughout this question.
 
-Now, suppose a set $A \subseteq \N$ is open in $(\N, d_1)$.
+For this part we will show that singletons in both $(\N, d_1)$ and $(\N,
+d_2)$ are open. Once we show this, it follows that all sets in both
+spaces are open. This is because (1) we can represent any set as the
+union of singletons; (2) the union of open sets is open; and (3)
+singletons are open in both spaces. If all sets in both spaces are open,
+then, trivially, a set is open in $(\N, d_1)$ if and only if it is open
+in $(\N, d_2)$.
 
-Not sure how to do
+First let's show that singletons in $(\N, d_1)$ are open. Let $X =
+\cbr{x}$ be any singleton in this space. Then we have $N_{0.9}(x)
+= X \subseteq X$, which shows that $X$ is open.
+
+Now we'll show that singletons in $(\N, d_2)$ are open. Again, let $X =
+\cbr{x}$ be any singleton in this space. The distance between $x$ and
+any other point $y = x + n$ (with $n \in \Z$, such that $y \in \N$ and
+$n \neq 0$) is
+%
+\begin{equation*}
+    d_2(x, y)
+        = \frac{\envert{n}}{x^2 + n x}
+        = \frac{1}{\frac{x^2}{|n|} + \sgn(n) x}
+        ,
+\end{equation*}
+%
+where $\sgn$ is the sign function. This distance is clearly minimized by
+taking $n = 1$; that is, $y = x + 1$. (Note, we will be using this fact
+in part (b)!) Take $\epsilon < \frac{1}{x^2 + x}$. Then, the
+neighbourhood with this radius centered at $x$ contains no other points,
+so we have that $N_\epsilon(x) = X \subseteq X$, and hence $X$ is open.
 
 \end{proof}
 
@@ -278,7 +291,7 @@ without loss of generality, $n \geq m$ and $n - m = k > 0$. Then we have
         .
 \end{equation*}
 
-In all cases, we have that $|x_n - x_m| < \epsilon$ for $n, m > N$.
+In all cases, we have that $|x_n - x_m| < \epsilon$ for $n, m \geq N$.
 Hence $\cbr{x_n}$ is Cauchy.
 
 \end{proof}
@@ -303,7 +316,7 @@ Take the example of the sequence $\cbr{x_n}$ whose terms are given by
 \end{equation*}
 %
 Suppose for contradiction that this sequence  was Cauchy. Then for any
-$\epsilon > 0$ there would be an $N \in \N$ such that $n, m > N$ implies
+$\epsilon > 0$ there would be an $N \in \N$ such that $n, m \geq N$ implies
 that
 %
 \begin{equation*}
@@ -319,7 +332,7 @@ Then
         &= |(x_N - x_{N + 1}) + (x_{N + 1} - x_{N + 2}) + \cdots + (x_{N + (m - N - 1)} - x_m)| \\
         &= \envert{ \sum_{i = 0}^{m - N - 1} \del{x_{N + i} - x_{N + i + 1}} } \\
         &= \envert{ \sum_{i = 0}^{m - N - 1} \frac{1}{2 \del{N + i}} } \\
-        &= \frac{1}{2} \sum_{i = 0}^{m - N - 1} \frac{1}{N + i} \\
+        &= \frac{1}{2} \sum_{i = 0}^{m - N - 1} \frac{1}{N + i}
     .
 \end{align*}
 %
