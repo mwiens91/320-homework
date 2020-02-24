@@ -49,6 +49,19 @@ $\sum_{n = 1}^\infty a_n b_n$ also converges absolutely.
 
 \begin{proof}
 
+Since the sequence $\cbr{b_n}$ is bounded there exists some $M > 0$ such
+that for all $n$, $|b_n| < M$. Then we have that
+%
+\begin{equation*}
+    \sum_{n = 1}^\infty | a_n b_n |
+        \leq M \sum_{n = 1}^\infty | a_n |
+        < \infty
+        ,
+\end{equation*}
+%
+since the product of any two finite numbers if finite. Hence $\sum_{n =
+1}^\infty a_n b_n$ also converges absolutely.
+
 \end{proof}
 
 (b) Suppose $\sum_{n = 1}^\infty a_n$ converges conditionally. Is it
@@ -56,6 +69,25 @@ true that $\sum_{n = 1}^\infty a_n b_n$ must converge? Prove or disprove
 by showing a counterexample.
 
 \textit{Solution.}
+In this case it is not true that $\sum_{n = 1}^\infty a_n b_n$ must converge.
+Take
+%
+\begin{equation*}
+    a_n = (-1)^{n + 1} \frac{1}{n}
+    .
+\end{equation*}
+%
+From lectures we know that $\sum_{n = 1}^\infty a_n$ converges
+conditionally (it is the alternating harmonic series). However, if we
+take
+%
+\begin{equation*}
+    b_n = (-1)^{n + 1}
+    ,
+\end{equation*}
+%
+then $\sum_{n = 1}^\infty a_n b_n$ is the harmonic series, which
+diverges.
 
 \newpage
 
@@ -65,6 +97,34 @@ by showing a counterexample.
    $1$.
 
 \begin{proof}
+
+Since infinitely many of the $a_n$s are non-zero, there exists $N_1 > 0$ such
+that for all $n > N_1$, $a_n \neq 0$. Using our formula for for the radius
+of convergence $R_0$, we have
+%
+\begin{equation*}
+    R_0 = \frac{1}{\limsup\limits_{n \to \infty} \envert{\frac{a_{n + 1}}{a_n}}}
+    .
+\end{equation*}
+%
+Note that this formula is valid for $n > N_1$, which is implicit in the
+limit $n \to \infty$. Suppose $R_0 > 1$. Then we must have that
+%
+\begin{equation*}
+    \limsup_{n \to \infty} \envert{\frac{a_{n + 1}}{a_n}} < 1
+    ,
+\end{equation*}
+%
+which implies that for some $N_2 > 0$, for all $n > N_2$
+%
+\begin{equation*}
+    |a_{n + 1}| < |a_n|
+    .
+\end{equation*}
+%
+However, since $a_{N_2}$ is finite, and $a_n \in \Z$, the above
+inequality can only hold for finitely many $n > N_2$. Hence we have
+arrived at a contradiction, and conclude that $R_0 \leq 1$.
 
 \end{proof}
 
@@ -82,11 +142,55 @@ must converge if $\delta > 0$.
 
 \begin{proof}
 
+Here we will use the Cauchy-Schwarz inequality as follows:
+%
+\begin{align*}
+    \del{\sum_{n = 1}^\infty \sqrt{\frac{a_n}{n^{1 + \delta}}}}^2
+        &\leq
+            \sum_{n = 1}^\infty \del{\sqrt{{a_n}}}^2
+            \cdot
+            \sum_{n = 1}^\infty \del{\sqrt{\frac{1}{n^{1 + \delta}}}}^2
+            \\
+        &=
+            \sum_{n = 1}^\infty {a_n}
+            \cdot
+            \sum_{n = 1}^\infty \frac{1}{n^{1 + \delta}}
+            \\
+        &< \infty
+        ,
+\end{align*}
+%
+since $\sum_{n = 1}^\infty {a_n}$ converges and by assumption of $\delta
+> 0$, $\sum_{n = 1}^\infty \frac{1}{n^{1 + \delta}}$ also converges. Hence
+%
+\begin{equation*}
+    \sum_{n = 1}^\infty \sqrt{\frac{a_n}{n^{1 + \delta}}} < \infty
+\end{equation*}
+%
+and $\sum_{n = 1}^\infty \sqrt{\frac{a_n}{n^{1 + \delta}}}$ is convergent.
+
 \end{proof}
 
 (b) What happens if $\delta = 0$?
 
 \textit{Solution.}
-hey
+Now we have no guarantee that $\sum_{n = 1}^\infty \sqrt{\frac{a_n}{n
+}}$ is convergent. As a counterexample, suppose
+%
+\begin{equation*}
+    a_n = \frac{1}{n (\log n)^2}
+    .
+\end{equation*}
+%
+From lectures we know that $\sum_{n = 1}^\infty a_n$ is convergent. However,
+%
+\begin{equation*}
+    \sqrt{\frac{a_n}{n}} = \frac{1}{n \log n}
+    ,
+\end{equation*}
+%
+and, also from lectures, we know that the corresponding series $\sum_{n
+= 1}^\infty \sqrt{\frac{a_n}{n }}$ diverges.
+
 
 \end{document}
