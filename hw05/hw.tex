@@ -60,6 +60,46 @@ $\sum_{n = 1}^\infty \frac{a_n}{1 + n^2 a_n}$ converges.
 
 \begin{proof}
 
+First we will show that $\sum_{n = 1}^\infty b_n$ diverges, where $b_n =
+\frac{a_n}{1 + a_n}$. We will consider two (exhaustive) cases. For the
+first case, suppose that infinitely many $a_n \geq 1$. Then we have
+infinitely many $b_n \geq \frac{1}{2}$ and clearly $\sum_{n =
+1}^\infty b_n$ diverges.
+
+For the second case, instead suppose that only finitely many $a_n \geq
+1$. Then there exists $N > 0$ such that for all $n \geq N$, $a_n < 1$.
+For all $n \geq N$ we have that $b_n \geq \frac{1}{2} a_n$. Suppose for
+contradiction that $b_n < \frac{1}{2} a_n$; then
+%
+\begin{align*}
+    &\frac{a_n}{1 + a_n} < \frac{1}{2} a_n \\
+    &\implies 1 + a_n > 2 \\
+    &\implies a_n > 1
+    ,
+\end{align*}
+%
+which contradicts our assumption on $b_n$. Hence we have that for $n
+\geq N$, $b_n \geq \frac{1}{2} a_n$, and thus
+%
+\begin{equation*}
+    \sum_{n = N}^\infty b_n \geq \frac{1}{2} \sum_{n = N}^\infty a_n = \infty
+\end{equation*}
+%
+Therefore $\sum_{n = 1}^\infty b_n = \infty$ and the series diverges (in
+both cases).
+
+Now we will show that $\sum_{n = 1}^\infty c_n$ converges, where $c_n
+= \frac{a_n}{1 + n^2 a_n}$. Noting that for $a_n > 0$,
+%
+\begin{equation*}
+    0 < c_n = \frac{a_n}{1 + n^2 a_n} < \frac{a_n}{n^2 a_n} = \frac{1}{n^2}
+    ,
+\end{equation*}
+%
+and trivially for $a_n = 0$, $c_n = 0 < \frac{1}{n^2}$, because $\sum_{n
+= 1}^\infty \frac{1}{n^2}$ converges, by the comparison test, $\sum_{n =
+1}^\infty c_n$ also converges.
+
 \end{proof}
 
 (b) What can you say about the convergence/divergence of $\sum_{n =
@@ -68,7 +108,76 @@ n a_n}$? Justify your claims by either proving them or showing
 counterexamples.
 
 \textit{Solution.}
-hey
+For the remaining series, either can converge or diverge. Consider the
+series $\sum_{n = 1}^\infty \alpha_n$ with $\alpha_n = \frac{a_n}{1 +
+a_n^2}$. If $a_n = \frac{1}{n}$, then
+%
+\begin{equation*}
+    \alpha_n = \frac{1}{n + \frac{1}{n}} > \frac{1}{2 n} = \frac{1}{2} a_n
+    .
+\end{equation*}
+%
+Since $\sum_{n = 1}^\infty \frac{1}{2} a_n = \frac{1}{2}\sum_{n =
+1}^\infty a_n = \infty$, by the comparison test $\sum_{n = 1}^\infty
+\alpha_n$ diverges.
+
+Now consider $a_n = n^2$. Then
+%
+\begin{equation*}
+    \alpha_n = \frac{1}{n^2 + \frac{1}{n^2}} < \frac{1}{n^2}
+    .
+\end{equation*}
+%
+Since $\sum_{n = 1}^\infty \frac{1}{n^2}$ converges, by the comparison
+test $\sum_{n = 1}^\infty \alpha_n$ also converges.
+
+Now consider the series $\sum_{n = 1}^\infty \beta_n$ with $\beta_n =
+\frac{a_n}{1 + n a_n}$. If we again set $a_n = \frac{1}{n}$, then
+%
+\begin{equation*}
+    \beta_n = \frac{1}{n + \frac{1}{n}} > \frac{1}{2 n} = \frac{1}{2} a_n
+\end{equation*}
+%
+and by the exact same logic as above, we have that $\sum_{n = 1}^\infty
+\beta_n$ diverges.
+
+Now consider $a_n$ defined by
+%
+\begin{equation*}
+    a_n =
+    \begin{cases}
+        1,& \text{$n$ is square} \\
+        0,& \text{otherwise}
+    \end{cases}
+    .
+\end{equation*}
+%
+Clearly $\sum_{n = 1}^\infty a_n$ diverges, since it contains infinitely
+many terms that are $1$. Now,
+%
+\begin{equation*}
+    \beta_n =
+    \begin{dcases}
+        \frac{1}{1 + n},& \text{$n$ is square} \\
+        0,& \text{otherwise}
+    \end{dcases}
+    .
+\end{equation*}
+%
+Thus we can re-write
+%
+\begin{equation*}
+    \sum_{n = 1}^\infty \beta_n = \sum_{n = 1}^\infty \frac{1}{1 + n^2}
+\end{equation*}
+%
+since all of the non-squared terms vanish. Since
+%
+\begin{equation*}
+    \frac{1}{1 + n^2} < \frac{1}{n^2}
+\end{equation*}
+%
+and $\sum_{n = 1}^\infty \frac{1}{n^2}$ converges, by the comparison
+test $\sum_{n = 1}^\infty \beta_n$ also converges.
 
 \newpage
 
