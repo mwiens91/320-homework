@@ -49,6 +49,55 @@
 
 \begin{proof}
 
+The proof here will be very similar to the proof of the Weierstrass M-test.
+For $n \in \N$, let
+%
+\begin{equation*}
+    f_n(x) = a_n x^n
+    ,
+\end{equation*}
+%
+and
+%
+\begin{equation*}
+    M_n = |a_n| R^n
+    .
+\end{equation*}
+%
+Note that for each $n$, and $x \in [-R, R]$, $|f_n(x)| \leq M_n$. Also
+note that $\sum_{n = 1}^\infty M_n$ is finite, since $R \in (-R_0,
+R_0)$. Now, letting
+%
+\begin{equation*}
+    S_k(x) = \sum_{n = 1}^k f_n(x), \qquad S(x) = \sum_{n = 1}^\infty f_n(x),
+\end{equation*}
+%
+we want to show that for any $\epsilon > 0$ there exists $N \in \N$ such
+that for all $k \geq N$
+%
+\begin{equation*}
+    \sup_{x \in [-R, R]}|S_k(x) - S(x)| < \epsilon
+    .
+\end{equation*}
+%
+Fix any $\epsilon > 0$. Because $\sum_{n = 1}^\infty M_n$ is finite,
+there exists an $N \in \N$ such that $\sum_{n = N}^\infty M_n <
+\epsilon$ (this is because the series is finite and thus also the terms
+$M_n \to 0$). But then for all $k \geq N$, we have
+%
+\begin{align*}
+    \sup_{x \in [-R, R]} |S_k(x) - S(x)|
+        &= \sup_{x \in [-R, R]} \envert{\sum_{n = k}^\infty f_n(x)} \\
+        &\leq \sup_{x \in [-R, R]} \sum_{n = k}^\infty |f_n(x)| \\
+        &\leq \sum_{n = k}^\infty M_n \\
+        &\leq \sum_{n = N}^\infty M_n \\
+        &< \epsilon
+        .
+\end{align*}
+%
+This shows that $S_k \to S$ in $(C[-R, R], d_\infty)$.
+
+
 \end{proof}
 
 \newpage
