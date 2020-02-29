@@ -239,6 +239,56 @@ test $\sum_{n = 1}^\infty \beta_n$ also converges.
 
 \begin{proof}
 
+First we will prove that
+%
+\begin{equation}
+    \frac{1}{n + 1} < \log\del{1 + \frac{1}{n}} < \frac{1}{n}
+    \label{eq:q3-a-i}
+\end{equation}
+%
+using the calculus identity
+%
+\begin{equation*}
+    \log\del{1 + \frac{1}{n}} = \int_1^{1 + \frac{1}{n}} \frac{1}{x} \dif x
+    .
+\end{equation*}
+%
+Now, in the above integrand we clearly have $1 < t < 1 + \frac{1}{n}$;
+rearranging this inequality, we have $\frac{n}{n + 1} < \frac{1}{t} < 1$.
+Thus we have
+%
+\begin{align*}
+    &
+        \int_1^{1 + \frac{1}{n}} \frac{n}{n + 1} \dif t
+        < \int_1^{1 + \frac{1}{n}} \frac{1}{t} \dif t
+        < \int_1^{1 + \frac{1}{n}} 1 \dif t
+        \\
+    &\iff
+        \frac{n}{n + 1} \cdot \frac{1}{n}
+        < \int_1^{1 + \frac{1}{n}} \frac{1}{t} \dif t
+        < \frac{1}{n}
+        \\
+    &\iff
+        \frac{1}{n + 1}
+        < \log\del{1 + \frac{1}{n}}
+        < \frac{1}{n}
+        ,
+\end{align*}
+%
+which proves~\eqref{eq:q3-a-i}. We can obtain~\eqref{eq:q3-a}
+from~\eqref{eq:q3-a-i} as follows:
+%
+\begin{align*}
+    &\frac{1}{n + 1} < \log\del{1 + \frac{1}{n}} < \frac{1}{n} \\
+    &\iff - \frac{1}{n + 1} > - \log\del{1 + \frac{1}{n}} > - \frac{1}{n} \\
+    &\iff \frac{1}{n} - \frac{1}{n + 1} > \frac{1}{n} - \log\del{1 + \frac{1}{n}} > 0 \\
+    &\iff \frac{1}{n (n + 1)} > \frac{1}{n} - \log\del{1 + \frac{1}{n}} > 0 \\
+    &\implies \frac{1}{n^2} > \frac{1}{n} - \log\del{1 + \frac{1}{n}} > 0
+    ,
+\end{align*}
+%
+where the last line is precisely~\eqref{eq:q3-a}.
+
 \end{proof}
 
 (b) Prove that for any $n \geq 1$,
@@ -309,6 +359,94 @@ So the statement is also true for $n = k$. This completes the induction.
 
 \begin{proof}
 
+First, we note that~\eqref{eq:q3-b} can be expressed as
+%
+\begin{equation}
+    \sum_{n = 1}^{2 k} (-1)^{n - 1} \frac{1}{n}
+    = \sum_{n = 1}^{k} \frac{1}{k + n}
+    = \sum_{n = k}^{2 k} \frac{1}{n}
+    \label{eq:q3-c-i}
+    .
+\end{equation}
+%
+Now, fix any $\epsilon > 0$. Let $N_1 \in \N$ be sufficiently large so
+that for all $k \geq N_1$,
+%
+\begin{equation}
+    \sum_{n = k}^{2k} \frac{1}{n^2} < \frac{\epsilon}{2}
+    \label{eq:q3-c-ii}
+    ;
+\end{equation}
+%
+and let $N_2 \in \N$ be sufficiently large so that
+%
+\begin{equation}
+    \log\del{2 + \frac{1}{N_2}} - \log 2 < \frac{\epsilon}{2}
+    \label{eq:q3-c-iii}
+    .
+\end{equation}
+%
+Adding $\log\del{1 + \frac{1}{n}}$ through in~\eqref{eq:q3-a} we have
+%
+\begin{equation*}
+    \log\del{1 + \frac{1}{n}} < \frac{1}{n} < \frac{1}{n^2} + \log\del{1 + \frac{1}{n}}
+    ,
+\end{equation*}
+%
+which can also be expressed as
+%
+\begin{equation*}
+    \log(n + 1) - \log n < \frac{1}{n} < \frac{1}{n^2} + \log(n + 1) - \log n
+    .
+\end{equation*}
+%
+Let $k \geq \max\cbr{N_1, N_2}$. Using the above equation, we have that
+%
+\begin{equation*}
+    \sum_{n = k}^{2k} \del{\log(n + 1) - \log n}
+    < \sum_{n = k}^{2k} \frac{1}{n}
+    < \sum_{n = k}^{2k} \del{\frac{1}{n^2} + \log(n + 1) - \log n}
+\end{equation*}
+%
+which simplifies to
+%
+\begin{equation*}
+    \log(2k + 1) - \log k
+    < \sum_{n = k}^{2k} \frac{1}{n}
+    < \log(2k + 1) - \log k + \sum_{n = k}^{2k} \frac{1}{n^2}
+    .
+\end{equation*}
+%
+Combining logarithms and simplifying, this becomes
+%
+\begin{equation*}
+    \log\del{2 + \frac{1}{k}}
+    < \sum_{n = k}^{2k} \frac{1}{n}
+    < \log\del{2 + \frac{1}{k}} + \sum_{n = k}^{2k} \frac{1}{n^2}
+\end{equation*}
+%
+or
+%
+\begin{equation*}
+    0
+    < \sum_{n = k}^{2k} \frac{1}{n} - \log\del{2 + \frac{1}{k}}
+    < \sum_{n = k}^{2k} \frac{1}{n^2}
+    .
+\end{equation*}
+%
+Now, using~\eqref{eq:q3-c-i},~\eqref{eq:q3-c-ii}, and~\eqref{eq:q3-c-iii} we have
+%
+\begin{align*}
+    &0
+    < \sum_{n = 1}^{2k} (-1)^{n - 1} \frac{1}{n} - \log 2 - \frac{\epsilon}{2}
+    < \frac{\epsilon}{2} \\
+    &\implies \envert{\sum_{n = 1}^{2k} (-1)^{n - 1} \frac{1}{n} - \log 2} < \epsilon
+    .
+\end{align*}
+%
+Since $\epsilon$ was arbitrary, it follows that $\sum_{n = 1}^\infty
+\frac{(-1)^{n - 1}}{n} = \log 2$.
+
 \end{proof}
 
 (d) Recall that the Riemann theorem (stated in class) asserts that a
@@ -318,6 +456,10 @@ $\sum_{n=1}^\infty \frac{(-1)^{n - 1}}{n}$ such that the re-arranged
 series converges to $2$.
 
 \textit{Solution.}
-Hey
+Although finding an explicit formula seems to be extremely difficult (I
+tried), the general idea for what we'd want to do is to add positive
+terms until we reach $2$, and then add chunks of positive and negative
+terms that are either $0$ or converge to $0$. Ideally, we would develop
+an explicit formula for this.
 
 \end{document}
