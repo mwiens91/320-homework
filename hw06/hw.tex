@@ -1,0 +1,93 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Operators
+\DeclareMathOperator{\sgn}{sgn}
+
+% Number sets
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{MATH 320 Homework 6} \\
+\textbf{Matt Wiens \#301294492} \\
+\textbf{2020-03-06}
+
+1. Consider the mapping $f: (\R, |\cdot|) \to (\R, |\cdot|)$ given by
+%
+\begin{equation*}
+   f(x)
+    = \begin{cases}
+        \sin \frac{1}{x}, & x \neq 0 \\
+        \alpha, & x = 0
+   \end{cases}
+   .
+\end{equation*}
+%
+Use the definition of continuity in topological spaces to show that $f$
+cannot be made into a continuous function no matter which $\alpha$ one
+chooses.
+
+\begin{proof}
+
+\end{proof}
+
+\newpage
+
+2. Let $(X, T_X)$ be a topological space. Consider the function $f: X
+   \to \R$ where $\R$ is equipped with the Euclidean metric. Show that
+   the set $\cbr{x \in X : f(x) = 2}$ must be closed.
+
+\begin{proof}
+
+\end{proof}
+
+\newpage
+
+3. Let $\Q$ be the set of rational numbers in $\R$. Suppose $f: (\Q,
+   |\cdot|) \to (\R, |\cdot|)$ is uniformly continuous. Show that there
+   exists a continuous function $F: (\R, |\cdot|) \to (\R, |\cdot|)$
+   such that $F(x) = f(x)$ for any $x \in \mathbb{Q}$. In other words,
+   $f$ can be extended to a continuous function on $\R$.
+
+\begin{proof}
+
+\end{proof}
+
+\newpage
+
+4. Let $d_\N$ be the discrete metric on $\N$. Find a mapping $f: (\Q,
+   |\cdot|) \to (\N, d_\N)$ such that $f$ is continuous and surjective.
+
+\textit{Solution.}
+hey
+
+\end{document}
