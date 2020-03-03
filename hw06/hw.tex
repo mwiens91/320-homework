@@ -58,6 +58,48 @@ chooses.
 
 \begin{proof}
 
+Suppose for contradiction that $f$ was continuous on its domain. Then
+for all open sets $W \subseteq \R$, we would have that $f^{-1}(W)$ is
+open.
+
+\textbf{Case 1:} Suppose $\alpha \in (-1, 1)$. Let $S = f^{-1} \del{(-1,
+1)}$, an open set by assumption. Since $0 \in S$ and $S$ is open, $0$ is
+an interior point of $S$ and there exists $\delta > 0$ such that
+$(-\delta, \delta) \subseteq S$ and $f\del{(-\delta, \delta)} \subseteq
+(-1, 1)$. Take $k$ sufficiently large such that
+%
+\begin{equation*}
+    x_k = \frac{1}{\pi / 2 + 2 \pi k} < \delta
+    .
+\end{equation*}
+%
+Then $x_k \in (-\delta, \delta)$ but $f(x_k) = 1$, which contradicts
+$f\del{(-\delta, \delta)} \subseteq (-1, 1)$.
+
+\textbf{Case 2:} Suppose $\alpha = -1$. Then follow the same logic as in
+case 1, but use the open interval $(-1 - \epsilon, 1)$ instead of $(-1,
+1)$ for any $\epsilon > 0$.
+
+\textbf{Case 3:} Suppose $\alpha = 1$. Then let $S = f^{-1}\del{(-1, 1 +
+\epsilon)}$ for any $\epsilon > 0$. Using similar logic as in case 1,
+there exists a $\delta > 0$ such that $f\del{(-\delta, \delta)}
+\subseteq (-1, 1 + \epsilon)$. Take $k$ sufficiently large such that
+%
+\begin{equation*}
+    x_k = - \frac{1}{\pi / 2 + 2 \pi k} > - \delta
+    .
+\end{equation*}
+%
+Then $x_k \in (-\delta, \delta)$ but $f(x_k) = -1$, which is a
+contradiction.
+
+\textbf{Case 4:} Suppose $|\alpha| > 1$. Then there exists $\epsilon >
+0$ such that $N_\epsilon(\alpha) \cup [-1, 1] = \emptyset$. Therefore,
+$f^{-1}\del{N_\epsilon(\alpha)} = \cbr{\alpha}$, which is not an open
+set. This contradicts the continuity assumption on $f$.
+
+Thus, for all choices of $\alpha$, $f$ cannot be continuous
+
 \end{proof}
 
 \newpage
