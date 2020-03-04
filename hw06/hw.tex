@@ -106,9 +106,19 @@ Thus, for all choices of $\alpha$, $f$ cannot be continuous
 
 2. Let $(X, T_X)$ be a topological space. Consider the function $f: X
    \to \R$ where $\R$ is equipped with the Euclidean metric. Show that
-   the set $\cbr{x \in X : f(x) = 2}$ must be closed.
+   if $f$ is continuous on $X$ then the set $\cbr{x \in X : f(x) = 2}$
+   must be closed.
 
 \begin{proof}
+
+Let $S = \R \setminus \cbr{2}$, an open set. Because $f$ is continuous,
+it follows that $f^{-1}(S)$ is open. Therefore
+%
+\begin{equation*}
+    \del{f^{-1}(S)}^c = f^{-1}(\cbr{2})
+\end{equation*}
+%
+is closed.
 
 \end{proof}
 
@@ -122,6 +132,56 @@ Thus, for all choices of $\alpha$, $f$ cannot be continuous
 
 \begin{proof}
 
+For every $x \in \R \setminus \Q$, let $\cbr{a_{xn}} \subset \Q$ be a
+sequence such that $\cbr{a_{xn}} \to x$.
+
+First, we want to show that for each such $x$, $\cbr{f(a_{xn})}$ is
+Cauchy (and hence converges in $\R$). Fix any $\epsilon > 0$. Since $f$
+is uniformly continuous, there exists $\delta > 0$ such that $|x - y| <
+\delta$ implies that $|f(x) - f(y)| < \epsilon$. Since $\cbr{a_{xn}}$ is
+convergent, it is Cauchy, and there exists $N > 0$ such that $n, m \geq
+N$ guarantee $|a_{nx} - a_{mx}| < \delta$. Therefore, for all $m, n \geq
+N$, $|f(a_{nx}) - f(a_{mx})| < \epsilon$.
+
+Now that we've established that $\cbr{f(a_{xn})}$ is convergent, let us
+verify that if $\cbr{a_{xn}}, \cbr{b_{xn}} \subset \Q$ are two sequences
+that converge to $x$ then $\lim_{n \to \infty} f(a_{xn}) = \lim_{n \to
+\infty} f(b_{xn})$. Fix any $\delta > 0$ and let $N_1 > 0$ be such that
+for all $n \geq N_1$, $|a_{xn} - x| < \delta / 2$ and $N_2 > 0$ be such
+that for all $n \geq N_2$, $|b_{xn} - x| < \delta / 2$. Let $N =
+\max\cbr{N_1, N_2}$. Then by the triangle inequality, for all $n \geq
+N$,
+%
+\begin{equation*}
+    |a_{xn} - b_{xn}| \leq |a_{xn} - x| + |b_{xn} - x| < \delta
+    .
+\end{equation*}
+%
+Since $f$ is uniformly continuous, for any $\epsilon > 0$, there exists
+$\delta > 0$ such that $|a_{xn} - b_{xn}| < \delta$ implies $|f(a_{xn})
+- f(b_{xn})| < \epsilon$. Combining this with our above result, there thus
+exists an $N > 0$ such that for all $n \geq N$ we have $|a_{xn} -
+b_{xn}| < \delta$ and also $|f(a_{xn}) - f(b_{xn})| < \epsilon$. Hence
+we have shown that $\lim_{n \to \infty} f(a_{xn}) = \lim_{n \to \infty}
+f(b_{xn})$.
+
+Finally, define $F: (\R, |\cdot|) \to (\R, |\cdot|)$ by
+%
+\begin{equation*}
+    F(x) =
+        \begin{cases}
+            \lim_{n \to \infty} f(a_{xn}), & x \in \R \setminus \Q \\
+            f(x), & x \in \Q
+        \end{cases}
+        .
+\end{equation*}
+%
+The above function $F$ is continuous at every point $x \in \R$ since if
+$\cbr{a_n}$ is any sequence such that $\cbr{a_n} \to x$, we have that
+$F(a_n) \to F(x)$ (this holds by the extension we've developed and the
+underlying continuity of $f$ on $\Q$). Since $F$ is continuous at every
+point on its domain, it is continuous on its domain.
+
 \end{proof}
 
 \newpage
@@ -130,6 +190,19 @@ Thus, for all choices of $\alpha$, $f$ cannot be continuous
    |\cdot|) \to (\N, d_\N)$ such that $f$ is continuous and surjective.
 
 \textit{Solution.}
-hey
+Recall that in any discrete metric space, all subsets of the space are
+open. Let $S_n = \del[0]{n - 3 + \sqrt{2}, n - 2 + \sqrt{2}} \subset \Q$
+and $T_n = \del[0]{-n + 2 - \sqrt{2}, -n + 3 - \sqrt{2}} \subset \Q$ for
+each $n \in \Z$. Let $f$ be the mapping which takes any $x \in \Q$ and
+returns $n \in \N$ such that $|x| \in S_n$. The domain of $f$ is clearly
+$\Q$, since the endpoints of the $S_n$ intervals are not elements of
+$\Q$ and hence for each $x \in \Q$, $|x| \in S_n$ for some $n$. Now,
+$f$ is surjective, since for any $n \in N$, $f^{-1}(n) = S_n \cup T_n
+\neq \emptyset$. Also, noting that $\cbr{n} \in \N$ is open, the set
+$f^{-1}(n) = S_n \cup T_n$ is also open (since the endpoints of the
+$S_n$ intervals $n + \sqrt{2} \not\in \Q$ and the $T_n$ intervals $-n -
+\sqrt{2} \not\in \Q$ for all $n \in \Z$). Hence, for any open set
+$\Gamma \subseteq \N$, $f^{-1}(\Gamma) = \cup_{n \in \Gamma} S_n \cup
+T_n$ is open. Therefore $f$ is also continuous.
 
 \end{document}
