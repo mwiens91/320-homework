@@ -18,6 +18,9 @@
 % Operators
 \DeclareMathOperator{\diam}{diam}
 
+% For closure bar
+\newcommand*\clos[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
 % Number sets
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\N}{\mathbb{N}}
@@ -46,6 +49,14 @@
 
 \begin{proof}
 
+Suppose for contradiction that $f(E)$ is not dense in $f(X)$. Then there
+is an interior point $y \in f(X)$ such that $y \not\in f(E)$. Let $Y$ be
+an open neighbourhood of $y$ such that $Y \cap f(E) = \emptyset$.
+Because $f$ is continuous, $S = f^{-1}(Y)$ is open. Since we have that
+$S \subset X$ is open and $S \cap E = \emptyset$, there exists an
+interior point $x \in X$ such that $x \not\in E$, which implies that $E$
+is not dense in $X$, which is a contradiction.
+
 \end{proof}
 
 \newpage
@@ -62,6 +73,52 @@ Show that this assertion fails if $A$ is only closed.
 
 \begin{proof}
 
+Recall that for any closed set $Y$, the function $d(\, \cdot, Y): A \to
+\R$ defined by $d(x, Y) = \inf \cbr{d(x, y): y \in Y}$ is continuous.
+Also recall that continuous functions on compact sets achieve their
+minimum.
+
+Suppose for contradiction that
+%
+\begin{equation*}
+    \inf_{x \in A, y \in B} d(x, y) = 0
+    .
+\end{equation*}
+%
+Then if we let $d(\, \cdot, B): A \to \R$, then our assumption can be
+rewritten as
+%
+\begin{equation*}
+    \inf_{x \in A} d(x, B) = 0
+    .
+\end{equation*}
+%
+However, since continuous functions on compact sets achieve their
+minimum, there must exist $x \in A$ such that
+%
+\begin{equation}
+    d(x, B) = 0
+    \label{eq:2-contra}
+    .
+\end{equation}
+%
+This further implies that there exists a limit point $y$ of $B$ such
+that~\eqref{eq:2-contra} holds. But since $B$ is closed, we must have
+that $y \in B$. But $d(x, y) = 0$ implies that $x \in B$ and $y \in A$,
+both of which are contradictions, since $A$ and $B$ are disjoint.
+
+However, if $A$ is only closed, then there is no guarantee that there is
+an $x \in A$ such that~\eqref{eq:2-contra} holds. For example, let $A =
+\N$, $B = \cbr{n + \frac{1}{n}: n \in \N}$. Both of these sets are
+trivially closed, and the smallest distance between any two points in
+these sets (in the $|\cdot|$ metric) is $\frac{1}{n}$; hence we clearly
+have that
+%
+\begin{equation*}
+    \inf_{x \in A, y \in B} d(x, y) = 0
+    .
+\end{equation*}
+
 \end{proof}
 
 \newpage
@@ -71,6 +128,16 @@ Show that this assertion fails if $A$ is only closed.
    $f^{-1}: Y \to X$ is continuous.
 
 \begin{proof}
+
+Recall that if $f$ is bijective, then $f = \del{f^{-1}}^{-1}$. Also
+recall that for continuous functions, images of compact sets are
+compact. Finally, recall that closed subsets of compact sets are compact.
+
+Hence what we need to show is that if $A \subset X$ is open, then $f(A)$
+is open in $Y$. Let $A \subset X$ be open. Then $A^c \subseteq X$ is
+closed, and because $X$ is compact, $A^c$ is also compact. Then $f(A^c)$
+is compact, and hence $f(A^c)^c$ is open. Because $f$ is bijective, it
+follows that $f(A^c)^c = f(A)$, an open set.
 
 \end{proof}
 
