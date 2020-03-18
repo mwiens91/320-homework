@@ -1,0 +1,145 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Operators
+\DeclareMathOperator{\sgn}{sgn}
+
+% Number sets
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{MATH 320 Homework 7} \\
+\textbf{Matt Wiens \#301294492} \\
+\textbf{2020-03-20}
+
+1. Consider the sequence of functions $\cbr{f_n}_{ n =1}^\infty$ given
+by
+%
+\begin{equation*}
+    f_n(x)  = \frac{1}{1 + n x},
+    \qquad
+    x \in [0, 1]
+    .
+\end{equation*}
+%
+(a) Prove that every $f_n$ is uniformly bounded and uniformly continuous.
+
+\begin{proof}
+
+\end{proof}
+
+(b) Prove by definition that $\cbr{f_n}_{n = 1}^\infty$ is not
+equicontinuous.
+
+\begin{proof}
+
+\end{proof}
+
+\newpage
+
+2. Let
+%
+\begin{equation*}
+    F_n(x) = \int_\pi^x n \sin \del{\frac{e^z}{n}} \dif z,
+    \qquad
+    x \in [\pi, 2 \pi]
+    .
+\end{equation*}
+%
+Prove that there exists a subsequence $\cbr{F_{n_k}}_{k = 1}^\infty$
+which converges uniformly on $[\pi, 2 \pi]$.
+
+\begin{proof}
+
+\end{proof}
+
+\newpage
+
+3. Let $f: [0, 1] \to \R$ be defined as
+%
+\begin{equation*}
+    f(x)
+    = \begin{cases}
+        1, & x = 1/n \ \text{for any $n \in \N$} \\
+        \sin x, & \text{otherwise}
+    \end{cases}
+    .
+\end{equation*}
+%
+(a) Show that for any $\epsilon > 0$, there exists a continuous function
+$g$ defined on $[0, 1]$ such that
+%
+\begin{equation*}
+    \int_0^1 |f(x) - g(x)|^2 \dif x < \epsilon
+    .
+\end{equation*}
+
+\begin{proof}
+
+\end{proof}
+
+(b) Show that for any $\epsilon > 0$, there exists a polynomial $h$ such that
+%
+\begin{equation*}
+    \int_0^1 |f(x) - h(x)|^2 \dif x < \epsilon
+    .
+\end{equation*}
+
+\begin{proof}
+
+\end{proof}
+
+\newpage
+
+4. Put $P_0 = 0$, and define, for $n = 0, 1, 2, \ldots,$
+%
+\begin{equation*}
+    P_{n + 1}(x) = P_n(x) + \frac{1}{2} \del{x^2 - P_n^2(x)}
+    .
+\end{equation*}
+%
+Prove that
+%
+\begin{equation*}
+    \lim_{n \to \infty} P_n(x) = |x|
+    ,
+\end{equation*}
+%
+uniformly on $[-1, 1]$.
+
+\begin{proof}
+
+see hint on page 179 of pdf
+
+\end{proof}
+
+\end{document}
