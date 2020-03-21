@@ -45,7 +45,7 @@
 by
 %
 \begin{equation*}
-    f_n(x)  = \frac{1}{1 + n x},
+    f_n(x) = \frac{1}{1 + n x},
     \qquad
     x \in [0, 1]
     .
@@ -55,12 +55,73 @@ by
 
 \begin{proof}
 
+Note that for all $n \in \N$,
+%
+\begin{equation*}
+    \sup_{x \in [0, 1]} |f_n(x)|
+    = \sup_{x \in [0, 1]} f_n(x)
+    = f_n(0)
+    = 1
+    .
+\end{equation*}
+%
+Hence $\cbr{f_n}_{n = 1}^\infty$ is uniformly bounded.
+
+Recall from lectures that if a function $f$ is continuous on a compact
+set $X$, then $f$ is uniformly continuous on that set. Since $[0, 1]$ is
+compact, to show that each $f_n$ is uniformly continuous on $[0, 1]$ we
+need only to show that they are continuous on the set. Here, we will show
+that each $f_n$ is continuous on every point on $[0, 1]$, which implies
+that it is continuous everywhere on the interval.
+
+Fix any $x_0 \in [0, 1]$ and $\epsilon > 0$. Then if $|x - x_0| <
+\frac{\epsilon}{n}$, we have that
+%
+\begin{align*}
+    |f_n(x) - f_n(x_0)|
+        &= \envert{\frac{1}{1 + n x} - \frac{1}{1 + n x_0}} \\
+        &= \frac{n |x_0 - x|}{\envert{n^2 x x_0 + n x + n x_0 + 1}} \\
+        &\leq n |x_0 - x| \\
+        &< n \, \frac{\epsilon}{n} \\
+        &= \epsilon
+        ,
+\end{align*}
+%
+where in the third step we used that $n, x, x_0 \geq 0$ implies that
+%
+\begin{equation*}
+    \envert{n^2 x x_0 + n x + n x_0 + 1}
+    = n^2 x x_0 + n x + n x_0 + 1
+    \geq 1
+    .
+\end{equation*}
+
 \end{proof}
 
 (b) Prove by definition that $\cbr{f_n}_{n = 1}^\infty$ is not
 equicontinuous.
 
 \begin{proof}
+
+Suppose for contradiction that $\cbr{f_n}_{n = 1}^\infty$ was
+equicontinuous. Let $\epsilon = \frac{1}{2}$. Then there would exist
+$\delta > 0$ such that for all $x \in [0, 1]$ satisfying $|x - 0| = x <
+\delta$, $|f_n(x) - f_n(0)| < \epsilon$ for all $n \in N$. However,
+if we take $n > \frac{1}{x}$ then $n x > 1$ and
+%
+\begin{align*}
+    |f_n(x) - f_n(0)|
+        &= \envert{\frac{1}{1 + n x} - 1} \\
+        &= \envert{\frac{n x}{1 + n x}} \\
+        &= \frac{n x}{1 + n x} \\
+        &> \frac{n x}{n x + n x} \\
+        &> \frac{1}{2} \\
+        &= \epsilon
+        .
+\end{align*}
+%
+This contradicts our assumption that $\cbr{f_n}_{n = 1}^\infty$ was
+equicontinuous.
 
 \end{proof}
 
@@ -79,6 +140,54 @@ Prove that there exists a subsequence $\cbr{F_{n_k}}_{k = 1}^\infty$
 which converges uniformly on $[\pi, 2 \pi]$.
 
 \begin{proof}
+
+First, note that $\cbr{F_n(x)}_{n = 1}^\infty \subset C[\pi, 2 \pi]$ and
+that $[\pi, 2 \pi]$ is compact in $\R$. Then, according to Ascali-Arzela,
+$\cbr{F_n(x)}_{n = 1}^\infty$ will have a uniformly convergent
+subsequence $\cbr{F_{n_k}}_{k = 1}^\infty$ provided that
+$\cbr{F_n(x)}_{n = 1}^\infty$ is uniformly bounded and equicontinuous.
+
+To show uniform boundedness note that we can write the integrand in the form
+%
+\begin{equation*}
+    n \sin \del{\frac{e^z}{n}}
+    = \frac{\sin \del{\frac{1}{n} e^z}}{\frac{1}{n} e^z} e^z
+    ,
+\end{equation*}
+%
+Recall from calculus that sinc function $\frac{sin(x)}{x}$ achieves its
+supremum at zero with a value of $1$. Hence
+%
+\begin{equation*}
+    n \sin \del{\frac{e^z}{n}}
+        \leq \frac{\sin \del{\frac{1}{n} e^z}}{\frac{1}{n} e^z} e^{2 \pi}
+        \leq e^{2 \pi}
+    .
+\end{equation*}
+%
+Therefore for all $n \in N$ we have that
+\begin{equation*}
+    F_n(x) = \int_\pi^x n \sin \del{\frac{e^z}{n}} \dif z
+        \leq \int_\pi^x e^{2 \pi} \dif z
+        = (x - \pi) e^{2 \pi}
+        \leq \pi e^{2 \pi}
+        .
+\end{equation*}
+
+To show equicontinuity, fix any $\epsilon > 0$ and let $\delta =
+\frac{\epsilon}{e^{2 \pi}}$. Then we have that if $|x - y| < \delta$
+(without loss of generality taking $x \geq y$), for all $n \in \N$
+%
+\begin{align*}
+    |f_n(x) - f_n(y)|
+        &= \envert{\int_y^x n \sin \del{\frac{e^z}{n}} \dif z} \\
+        &= \int_y^x n \sin \del{\frac{e^z}{n}} \dif z \\
+        &\leq \int_y^x e^{2 \pi} \dif z \\
+        &= e^{2 \pi} |x - y| \\
+        &< e^{2 \pi} \frac{\epsilon}{e^{2 \pi}} \\
+        &= \epsilon
+        .
+\end{align*}
 
 \end{proof}
 
@@ -105,6 +214,46 @@ $g$ defined on $[0, 1]$ such that
 
 \begin{proof}
 
+Let $g(x) = \sin(x)$. Fix any $\epsilon > 0$. Then define the function
+%
+\begin{equation*}
+    F(x) =
+    \begin{cases}
+        1 - 2 \sin(x) + \sin^2(x), & x = 1/n \ \text{for any $n \in \N$} \\
+        0, & \text{otherwise}
+    \end{cases}
+    ,
+\end{equation*}
+%
+and also
+%
+\begin{equation*}
+    G(x) =
+    \begin{cases}
+        1, & x = 1/n \ \text{for any $n \in \N$} \\
+        0, & \text{otherwise}
+    \end{cases}
+    .
+\end{equation*}
+%
+Note that $|F(x)| \leq 4 G(x)$. Then we have that
+%
+\begin{align*}
+    \int_0^1 |f(x) - g(x)|^2 \dif x
+        = \int_0^1 |F(x)| \dif x
+        \leq 4 \int_0^1 G(x) \dif x
+        = 0
+        < \epsilon
+        .
+\end{align*}
+%
+Where we used the fact from introductory analysis that
+%
+\begin{equation*}
+    \int_0^1 G(x) \dif x = 0
+    .
+\end{equation*}
+
 \end{proof}
 
 (b) Show that for any $\epsilon > 0$, there exists a polynomial $h$ such that
@@ -115,6 +264,35 @@ $g$ defined on $[0, 1]$ such that
 \end{equation*}
 
 \begin{proof}
+
+Fix any $\epsilon > 0$. Let $g \in C[0, 1]$ be such that
+%
+\begin{equation*}
+    \int_0^1 |f(x) - g(x)|^2 \dif x < \frac{\epsilon}{2}
+    ,
+\end{equation*}
+%
+and, using that the set of polynomials are dense in $(C[0, 1],
+d_\infty)$, let $h$ be a polynomial such that $d_\infty(g, h) <
+\sqrt{\frac{\epsilon}{2}}$. Then we have that
+%
+\begin{equation*}
+    \int_0^1 |g(x) - h(x)|^2 \dif x
+        < \int_0^1 \del{\frac{\epsilon}{2}}^2 \dif x
+        = \frac{\epsilon}{2}
+        ;
+\end{equation*}
+%
+and so
+%
+\begin{align*}
+    \int_0^1 |f(x) - h(x)|^2 \dif x
+        &\leq \int_0^1 \del{|f(x) - g(x)|^2 + |g(x) - h(x)|^2} \dif x \\
+        &= \int_0^1 |f(x) - g(x)|^2 \dif x + \int_0^1 |g(x) - h(x)|^2 \dif x \\
+        &< \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+        &= \epsilon
+        .
+\end{align*}
 
 \end{proof}
 
@@ -138,8 +316,98 @@ uniformly on $[-1, 1]$.
 
 \begin{proof}
 
-see hint on page 179 of pdf
+We will use the following identity suggested in the textbook:
+%
+\begin{equation}
+    |x| - P_{n + 1}(x) = \del{|x| - P_n(x)} \del{1 - \frac{|x| + P_n(x)}{2}}
+    \label{eq:4-id}
+    .
+\end{equation}
+%
+Furthermore, we will restrict all values of $x$ below to lie in $[-1, 1]$.
+
+First let's show that $0 \leq P_n(x) \leq |x|$. For $n = 1$, clearly
+%
+\begin{equation*}
+    P_1(x) = \frac{x^2}{2} \leq |x|
+\end{equation*}
+%
+and note also that the above equality implies $P_1(x) \geq 0$. Suppose
+this holds for $n = k - 1$. Then we have
+%
+\begin{equation*}
+    P_k(x) = P_{k - 1}(x) + \frac{1}{2} \del{x^2 - P^2_{k - 1}(x)}
+    .
+\end{equation*}
+%
+By assumption $P_{k - 1}(x) \geq 0$ and also $\del{x^2 - P^2_{k - 1}(x)}
+\geq 0$ and hence $P_k \geq 0$. Using~\eqref{eq:4-id} we have
+%
+\begin{equation*}
+    |x| - P_{k}(x) = \del{|x| - P_{k - 1}(x)} \del{1 - \frac{|x| + P_{k - 1}(x)}{2}} \geq 0
+\end{equation*}
+%
+since
+%
+\begin{equation*}
+    |x| - P_{k - 1}(x) \geq 0
+\end{equation*}
+%
+and
+%
+\begin{equation*}
+    1 - \frac{|x| + P_{k - 1}(x)}{2} \geq 0
+\end{equation*}
+%
+(the last inequality is true since $0 \leq P_{k - 1} \leq |x| \leq 1$).
+This completes the induction, and hence we have that $0 \leq P_n(x) \leq
+|x|$ for all $n \in \N$. That $P_{n + 1}(x) \geq P_n$ follows trivially
+now from~\eqref{eq:4-id}. Hence we have that $0 \leq P_n(x) \leq P_{n +
+1}(x) \leq |x|$.
+
+Observe that
+%
+\begin{equation*}
+    |x| - P_{n}(x)
+        = \del{|x| - P_{n - 1}(x)} \del{1 - \frac{|x| + P_{n - 1}(x)}{2}}
+        \leq \del{|x| - P_{n - 1}(x)} \del{1 - \frac{|x|}{2}}
+\end{equation*}
+%
+and so
+%
+\begin{align*}
+    0
+        &\leq |x| - P_n(x) \\
+        &\leq \del{|x| - P_{n - 1}(x)} \del{1 - \frac{|x|}{2}} \\
+        &\leq \del{|x| - P_{n - 2}(x)} \del{1 - \frac{|x|}{2}}^2 \\
+        &\leq \ldots \\
+        &\leq (|x| - 0) \del{1 - \frac{|x|}{2}}^n \\
+        &= |x| \del{1 - \frac{|x|}{2}}^n
+        .
+\end{align*}
+%
+Noting that for $y \in [0, 1]$ we have
+%
+\begin{align*}
+    y \del{1 - \frac{y}{2}}^n
+        &\leq y (1 - y)^n \\
+        &\leq y^n (1 - y)^n \\
+        &= \del{y (1 - y)}^n \\
+        &= \del{\frac{1}{4} - \del{\frac{1}{2} - y}^2}^n \\
+        &\leq \frac{1}{4^n}
+        ,
+\end{align*}
+%
+it follows that
+%
+\begin{equation*}
+    0 \leq |x| - P_n(x) \leq \frac{1}{4^n}
+    .
+\end{equation*}
+%
+Hence $\lim_{n \to \infty} P_n(x) = |x|$ uniformly on $[-1, 1]$.
 
 \end{proof}
+
 
 \end{document}
