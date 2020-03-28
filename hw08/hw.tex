@@ -1,0 +1,98 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Number sets
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{MATH 320 Homework 8} \\
+\textbf{Matt Wiens \#301294492} \\
+\textbf{2020-04-14}
+
+1. Let $f: \R^2 \to \R^2$ and $g: \R^2 \to \R^3$ be defined by
+%
+\begin{align*}
+    f(x, y) &= (x \sin y, \ \cos(x+y)), \\
+    g(x, y) &= (x^2 y, \ \ln (1+(x+y)^2))
+    .
+\end{align*}
+%
+Use the chain rule (instead of finding the explicit formula of $g \circ
+f$) to find $D(f \circ g)$ at $(1, 0)$.
+
+\textit{Solution.}
+There's a typo in this question.
+
+\newpage
+
+2. Let $f: \R^k \to \R^n$ and $g: \R^k \to \R^n$ be differentiable
+mappings. Use the definition of the derivative to show that $\alpha f
++ \beta g: \R^k \to \R^n$ is differentiable for any $\alpha, \beta
+\in \R$.
+
+\textit{Solution.}
+
+\newpage
+
+3. Consider the function $f: \R^2 \to \R$ given by
+%
+\begin{equation*}
+    f(x, y)
+    = \begin{cases}
+        \dfrac{x y}{x^2 + y^2}, & (x, y) \neq (0, 0), \\
+        0, & (x, y) = (0, 0).
+   \end{cases}
+\end{equation*}
+%
+Show that $\partial x f$ and $\partial y f$ both exist at $(0, 0)$ but
+$f$ is not differentiable at $(0, 0)$, hence $D f$ does not exist at
+$(0, 0)$.
+
+\textit{Solution.}
+
+\newpage
+
+4. Consider the two equations
+%
+\begin{align*}
+    x^2 - y^2 - u^3 + v^2 + 4 = 0
+    \quad \text{and} \quad
+    2 x y + y^2 - 2 u^2 + 3 v^4 + 8 = 0
+    .
+\end{align*}
+%
+Show that near the point $(x, y, u, v) = (2, -1, 2, 1)$, we can solve
+for $(u, v)$ in terms of $(x, y)$.
+
+\textit{Solution.}
+
+\end{document}
