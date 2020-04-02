@@ -44,19 +44,121 @@
 \textbf{Matt Wiens \#301294492} \\
 \textbf{2020-04-14}
 
-1. Let $f: \R^2 \to \R^2$ and $g: \R^2 \to \R^3$ be defined by
+1. Let $f: \R^2 \to \R^2$ and $g: \R^2 \to \R^2$ be defined by
 %
 \begin{align*}
     f(x, y) &= (x \sin y, \ \cos(x+y)), \\
-    g(x, y) &= (x^2 y, \ \ln (1+(x+y)^2))
+    g(x, y) &= (x^2 y, \ \log (1+(x+y)^2))
     .
 \end{align*}
 %
-Use the chain rule (instead of finding the explicit formula of $g \circ
-f$) to find $D(f \circ g)$ at $(1, 0)$.
+Use the chain rule (instead of finding the explicit formula of $f \circ
+g$) to find $D(f \circ g)$ at $(1, 0)$.
 
 \textit{Solution.}
-There's a typo in this question.
+First, we will compute $D f$ and $D g$ (computing these is a calculus
+problem so I will the partial derivatives by inspection since they
+are simple enough):
+%
+\begin{align*}
+    D f
+    &=
+        \begin{pmatrix}
+            \partial_x f_1 & \partial_y f_1 \\
+            \partial_x f_2 & \partial_y f_2
+        \end{pmatrix}
+    =
+        \begin{pmatrix}
+            \sin y & x \cos y \\
+            - \sin(x + y) & - \sin(x + y)
+        \end{pmatrix}
+        ,
+    \\
+    D g
+    &=
+        \begin{pmatrix}
+            \partial_x g_1 & \partial_y g_1 \\
+            \partial_x g_2 & \partial_y g_2
+        \end{pmatrix}
+    =
+        \begin{pmatrix}
+            2 x y & x^2 \\[5pt]
+            2 \dfrac{x + y}{1 + (x + y)^2} & 2 \dfrac{x + y}{1 + (x + y)^2}
+        \end{pmatrix}
+        .
+\end{align*}
+%
+Next, we will compute $\eval[0]{D g}_{(1, 0)}$ and $\eval[0]{D f}_{g(1,
+0)}$. Using our above expression for $D g$, we have
+%
+\begin{equation*}
+    \eval[0]{D g}_{(1, 0)}
+    =
+    \eval{
+        \begin{pmatrix}
+            2 x y & x^2 \\[5pt]
+            2 \dfrac{x + y}{1 + (x + y)^2} & 2 \dfrac{x + y}{1 + (x + y)^2}
+        \end{pmatrix}
+    }_{(1, 0)}
+    =
+        \begin{pmatrix}
+            0 & 1 \\
+            1 & 1
+        \end{pmatrix}
+    .
+\end{equation*}
+%
+Noting that
+%
+\begin{equation*}
+    g(1, 0) = (0, \log 2)
+    ,
+\end{equation*}
+%
+we have that
+%
+\begin{equation*}
+    \eval[0]{D f}_{g(1, 0)}
+    =
+    \eval[0]{D f}_{(0, \log 2)}
+    =
+    \eval{
+        \begin{pmatrix}
+            \sin y & x \cos y \\
+            - \sin(x + y) & - \sin(x + y)
+        \end{pmatrix}
+    }_{(0, \log 2)}
+    =
+        \begin{pmatrix}
+            \sin(\log 2) & 0 \\
+            - \sin(\log 2) & - \sin(\log 2)
+        \end{pmatrix}
+    .
+\end{equation*}
+%
+Therefore, using the chain rule we have that
+%
+\begin{align*}
+    \eval[0]{D(f \circ g)}_{(1, 0)}
+    &= \eval[0]{D f}_{g(1, 0)} \eval[0]{D g}_{(1, 0)}
+    \\
+    &=
+        \begin{pmatrix}
+            \sin(\log 2) & 0 \\
+            - \sin(\log 2) & - \sin(\log 2)
+        \end{pmatrix}
+        \begin{pmatrix}
+            0 & 1 \\
+            1 & 1
+        \end{pmatrix}
+        \\
+    & =
+        \begin{pmatrix}
+            0 & \sin(\log 2) \\
+            - \sin(\log 2) & - 2 \sin(\log 2)
+        \end{pmatrix}
+        .
+\end{align*}
 
 \newpage
 
