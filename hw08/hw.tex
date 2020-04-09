@@ -19,7 +19,9 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\0}{\mathbf{0}}
 \newcommand{\ex}{\mathbf{e}_1}
-\newcommand{\ey}{\mathbf{e_2}}
+\newcommand{\ey}{\mathbf{e}_2}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bu}{\mathbf{u}}
 
 % Number sets
 \newcommand{\C}{\mathcal{C}}
@@ -56,9 +58,10 @@ Use the chain rule (instead of finding the explicit formula of $f \circ
 g$) to find $D(f \circ g)$ at $(1, 0)$.
 
 \textit{Solution.}
-First, we will compute $D f$ and $D g$ (computing these is a calculus
-problem so I will the partial derivatives by inspection since they
-are simple enough):
+Note that both $f$ and $g$ are differentiable everywhere since each of
+their components is differentiable everywhere. Now, first, we will
+compute $D f$ and $D g$ (computing these is a calculus problem so I will
+the partial derivatives by inspection since they are simple enough):
 %
 \begin{align*}
     D f
@@ -335,5 +338,75 @@ Show that near the point $(x, y, u, v) = (2, -1, 2, 1)$, we can solve
 for $(u, v)$ in terms of $(x, y)$.
 
 \textit{Solution.}
+Denote $\bx = (x, y) \in \R^2$, $\bu = (u, v) \in \R^2$ and define
+%
+\begin{equation*}
+    f(\bx, \bu) =
+        \begin{pmatrix}
+            x^2 - y^2 - u^3 + v^2 + 4 \\
+            2 x y + y^2 - 2 u^2 + 3 v^4 + 8
+        \end{pmatrix}
+\end{equation*}
+%
+where $f: \R^4 \to \R^2$. Since both components of $f$ are
+differentiable everyhwere, it follows that $f$ is differentiable
+everywhere with derivative
+%
+\begin{equation*}
+    D f =
+        \begin{pmatrix}
+            \partial_x f_1 & \partial_y f_1 & \partial_u f_1 & \partial_v f_1 \\
+            \partial_x f_2 & \partial_y f_2 & \partial_u f_2 & \partial_v f_2
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            2x & -2y & -3u^2 & 2v \\
+            2y & 2x + 2y & -4u & 12v^3
+        \end{pmatrix}
+        .
+\end{equation*}
+%
+Since all components of $D f$ are continuous, $D f$ is continuous and
+hence $f$ is continuously differentiable.
+
+Let $\bx_0 = (2, -1)$, $\bu_0 = (2, 1)$ and note that $f(\bx_0, \bu_0) =
+0$. Also, we have that for the Jacobian matrix
+%
+\begin{equation*}
+    J_{f, u} (\bx, \bu) =
+        \begin{pmatrix}
+            -3u^2 & 2v \\
+            -4u & 12v^3
+        \end{pmatrix}
+        ,
+\end{equation*}
+%
+when we evaluate $J_{f, u}$ at $(\bx_0, \bu_0)$ we get
+%
+\begin{equation*}
+    J_{f, u} (\bx_0, \bu_0) =
+        \begin{pmatrix}
+            -12 & 2 \\
+            -8 & 12
+        \end{pmatrix}
+        ,
+\end{equation*}
+%
+which is an invertible matrix with inverse
+%
+\begin{equation*}
+    \begin{pmatrix}
+        -12 & 2 \\
+        -8 & 12
+    \end{pmatrix}^{-1}
+    =
+    \begin{pmatrix}
+        -\frac{3}{32} & \frac{1}{64} \\[4pt]
+        -\frac{1}{16} & \frac{3}{32}
+    \end{pmatrix}
+\end{equation*}
+%
+Therefore, according to the implicit function theorem, we can solve for
+$\bu$ in terms of $\bx$ in some neighbourhood of $(\bx_0, \bu_0)$.
 
 \end{document}
