@@ -85,6 +85,25 @@ Show that if $w \in X$, then $Tw \in X$ if $t_0$ is small enough.
 
 \textit{Solution.}
 
+Fix $w \in X$. Then we have that
+%
+\begin{align*}
+    \int_0^{t} \del{w^2(s) - 2 w^3(s) + 2} \dif s
+        &\leq \int_0^{t} \envert{w^2(s) - 2 w^3(s) + 2} \dif s \\
+        &\leq \int_0^{t} \del{|w^2(s)| + 2 |w^3(s)| + 2} \dif s \\
+        &\leq \int_0^{t} \del{4 + 16 + 2} \dif s \\
+        &= 22 t
+        .
+\end{align*}
+%
+Hence if we take then $t_0 \leq 1 / 22$ then
+%
+\begin{equation*}
+    T w \leq 1 + 22 t \leq 1 + 22 t_0 \leq 2
+\end{equation*}
+%
+and so $T w \in X$ for such $t_0$.
+
 \newpage
 
 \textbf{Step 2.}
@@ -93,6 +112,57 @@ $(X, \norm{\cdot}_{L^\infty})$.
 
 \textit{Solution.}
 
+Let $w, v \in X$. We want to show that for $t_0$ sufficiently small,
+then there exists a constant $k \in (0, 1)$ such that
+%
+\begin{equation*}
+    \norm{Tw - Tv}_{L^\infty} \leq k \norm{w - v}_{L^\infty}
+    .
+\end{equation*}
+%
+The difference $Tw - Tv$ is trivially expressed by
+%
+\begin{equation*}
+    Tw - Tv = \int_0^{t} \del{w^2(s) - v^2(s) - 2 w^3(s) + 2 v^3(s)} \dif s
+    .
+\end{equation*}
+%
+Note that in the integrand (suppressing the $s$ arguments for now) we can
+rearrange the polynomial as follows
+%
+\begin{align*}
+    w^2 - v^2 - 2 w^3 + 2 v^3
+        &= (w - v) (w + v) - 2 (w - v) (w^2 + w v + v^2) \\
+        &= (w - v) (w + v - 2 (w^2 + w v + v^2))
+        .
+\end{align*}
+%
+Using that, for any $t \in [0, t_0]$, $w - v \leq \norm{w -
+v}_{L^\infty}$, we have the inequalities
+%
+\begin{align*}
+    Tw - Tv
+        &= \int_0^{t} (w(s) - v(s)) (w(s) + v(s) - 2 (w^2(s) + w(s) v(s) + v^2(s))) \dif s \\
+        &\leq \int_0^{t} |w(s) - v(s)| |w(s) + v(s) - 2 (w^2(s) + w(s) v(s) + v^2(s))| \dif s \\
+        &\leq \norm{w - v}_{L^\infty} \int_0^{t} |w(s) + v(s) - 2 (w^2(s) + w(s) v(s) + v^2(s))| \dif s \\
+        &\leq \norm{w - v}_{L^\infty} \int_0^{t} \del{|w(s)| + |v(s)| + 2 (|w^2(s)| + |w(s)| |v(s)| + |v^2(s))|} \dif s \\
+        &\leq \norm{w - v}_{L^\infty} \int_0^{t} \del{2 + 2 + 2 (4 + 4 + 4)} \dif s \\
+        &\leq \norm{w - v}_{L^\infty} 28 t
+        .
+\end{align*}
+%
+Hence if we take $t_0 < 1 / 28$ then
+%
+\begin{equation*}
+    \norm{Tw - Tv}_{L^\infty}
+        \leq 28 \norm{w - v}_{L^\infty} \sup_{t \in [0, t_0} t
+        \leq 28 \norm{w - v}_{L^\infty} t_0
+        < \norm{w - v}_{L^\infty}
+        .
+\end{equation*}
+%
+Hence $T$ is a contraction mapping for such $t_0$.
+
 \newpage
 
 \textbf{Step 3.}
@@ -100,6 +170,75 @@ Show that $(X, \norm{\cdot}_{L^\infty})$ is complete, thus $T$ has a
 unique fixed point in $X$.
 
 \textit{Solution.}
+Let $\cbr{w_n}$ be a Cauchy sequence in $X$. Define $w: [0, t_0] \to \R$
+by $w(t) = \lim_{n \to \infty} w_n(t)$; that is, $w$ is the pointwise
+limit of $\cbr{w_n}$. Note that this limit exists since $w_n(t)$ is a
+Cauchy sequence in $\R$ (which is complete) for any fixed $t \in [0,
+t_0]$.
+
+Fix any $\epsilon > 0$. Since $\cbr{w_n}$ is Cauchy, there exists an $N
+\in \N$ such that for all $n, m \geq N$,
+%
+\begin{equation*}
+    \norm{w_n - w_m}_{L^\infty} < \frac{\epsilon}{3}
+    .
+\end{equation*}
+%
+First we will show that $w \in X$. To see that $|w(t)| \leq 2$ for all
+$t \in [0, t_0]$. For any $t \in [0, t_0]$ we have that, using the
+triangle inequality,
+%
+\begin{align*}
+    |w(t)| &\leq |w(t) - w_N(t)| + |w_N(t)| \\
+           &= \envert[2]{\lim_{n \to \infty} w_n(t) - w_N(t)} + |w_N(t)| \\
+           &= \lim_{n \to \infty} \envert{w_n(t) - w_N(t)} + |w_N(t)| \\
+           &< \frac{\epsilon}{3} + |w_N(t)| \\
+           &\leq \frac{\epsilon}{3} + 2
+           .
+\end{align*}
+%
+Note that in the third step we were able to commute the limit with
+$|\cdot|$ since $|\cdot|$ is continuous. Taking the limit as $\epsilon
+\to 0$ we thus have that $|w(t)| \leq 2$ for all $t \in [0, t_0]$.
+
+To see that $w$ is continuous, we will use the continuity of the $w_n$s:
+there exists a $\delta > 0$ such that $d(t, s) < \delta$ implies that
+%
+\begin{equation*}
+    |w_N(t) - w_N(s)| < \frac{\epsilon}{3}
+    .
+\end{equation*}
+%
+Hence, we have that, again using the triangle inequality,
+%
+\begin{align*}
+    |w(t) - w(s)| &\leq |w(t) - w_N(t)| + |w(s) - w_N(s)| + |w_N(t) - w_N(s)| \\
+                  &< 3 \frac{\epsilon}{3} \\
+                  &= \epsilon
+                  .
+\end{align*}
+%
+This shows that $w$ is continuous. Hence, we have shown that $w \in X$.
+
+Finally, we will show that $\cbr{w_n} \to w$. For all $t \in [0, t_0]$
+we have that, for $n \geq N$,
+%
+\begin{align*}
+    |w(t) - w_n(t)|
+        &= \envert[2]{\lim_{m \to \infty} w_m(t) - w_n(t)} \\
+        &= \lim_{m \to \infty} \envert{w_m(t) - w_n(t)} \\
+        &\leq \frac{\epsilon}{3}
+    .
+\end{align*}
+%
+Hence for $n \geq N$,
+%
+\begin{equation*}
+    \norm{w - w_m}_{L^\infty} < \frac{\epsilon}{3}
+    .
+\end{equation*}
+%
+which shows that $\cbr{w_n} \to w \in X$.
 
 \newpage
 
@@ -110,6 +249,16 @@ solution to~\eqref{eq:main}, by which we have found a unique solution
 to~\eqref{eq:main}.
 
 \textit{Solution.}
+Since $u \in X$ it is automatically continuous. Further, since $u$ is
+the unique fixed point of $T$ we have that
+%
+\begin{equation*}
+    u = T u = 1 + \int_0^t \del{u^2(s) - 2 u^3(s) + 2} \dif s
+\end{equation*}
+%
+Clearly $u$ is differentiable. Thus, taking a $t$ derivative on both
+sides of the above equation, we obtain~\eqref{eq:main}. Hence $u$ is the
+unique solution to~\eqref{eq:main}.
 
 \newpage
 
@@ -126,5 +275,48 @@ in $(X, \norm{\cdot}_{L^\infty})$, where $X$ is defined
 in~\eqref{eq:x} with the same $t_0$ chosen in the previous steps.
 
 \textit{Solution.}
+To keep the notation simple in this solution, let $d =
+\norm{\cdot}_{L^\infty}$. Our goal is to show that $\cbr{u_n}$ is
+Cauchy. Since we have shown that $X$ is complete, it then follows
+automatically that it has a convergent subsequence.
+
+First, note that
+%
+\begin{equation*}
+    u_1 - u_0 = T u_0 -  u_0 = \del{1 + \int_0^t \del{1 - 2 + 2} \dif s} - 1 = t
+\end{equation*}
+%
+and hence $d(u_1, u_0) = t_0$.
+
+Fix any $\epsilon > 0$. Since $T$ is a contraction mapping, there exists
+$k \in (0, 1)$ such that $d(Tw, Tv) \leq k d(w, v)$ for all $w, v \in
+X$. In particular we have that
+%
+\begin{equation*}
+    d(u_{n + 1}, u_n) = d(T u_n, T u_{n - 1}) \leq k d(u_n, u_{n - 1}) \leq k^2 d(u_{n - 1}, u_{n - 2}) \leq \cdots \leq k^n d(u_1, u_0) = k^n t_0
+    .
+\end{equation*}
+%
+Let $n, m \geq N$, without loss of generality taking $n \geq m$, where $N$ is sufficiently large such that
+%
+\begin{equation*}
+    t_0 \frac{k^N}{1 - k} < \epsilon
+    .
+\end{equation*}
+%
+Then by repeatedly applying the triangle equality we have
+%
+\begin{align*}
+    d(u_n, u_m) &\leq d(u_n, u_{n - 1}) + d(u_{n - 1}, u_{n - 2}) + \cdots + d(u_{m + 1}, u_m) \\
+                &\leq k^{n - 1} t_0 + k^{n - 2} t_0 + \cdots + k^{m} t_0 \\
+                &\leq t_0 (k^m + k^{m + 1} + k^{m + 2} + \cdots) \\
+                &= t_0 \frac{k^m}{1 - k} \\
+                &\leq t_0 \frac{k^N}{1 - k} \\
+                &< \epsilon
+                .
+\end{align*}
+%
+Hence we have shown that $\cbr{u_n}$ is Cauchy and the completeness of
+$X$ implies it has a convergent subsequence.
 
 \end{document}
